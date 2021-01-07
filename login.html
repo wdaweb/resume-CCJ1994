@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <link rel="shortcut icon" type="image/x-ico" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&family=Ubuntu:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/7e94f0c211.js" crossorigin="anonymous"></script>
+  
+
+</head>
+
+<body>
+  <!-- login -->
+  <div id="cover">
+    <div class="loginbg"></div>
+    <div id="coverr" class="overflow-hidden">
+      <div id="back" class="text-end mt-4 me-4 text-muted" style="cursor: pointer;">Back</div>
+      <div class="container d-flex flex-column align-items-center mt-5">
+        <div class="logintitle align-self-start ms-5">
+          <div class="subtitle">Welcome,</div>
+          <div class="subtitle">Update Info</div>
+        </div>
+        <form action="api/chk.php" method="post">
+          <div class="form-floating my-2 ">
+            <input type="text" class="form-control border-0" id="floatingInput" placeholder="account" name="acc" required>
+            <label for="floatingInput">Account</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control border-0" id="floatingPassword" placeholder="Password" name="pw" required>
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="text-end">
+            <a class="text-muted" href=""><small>Forgot Password?</small></a>
+          </div>
+          <div class="text-center mt-3">
+            <button type="submit" style="background: transparent;color: #34495e;border: 0px;">Sign in <i
+                class="fas fa-sign-in-alt"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/myself.js"></script>
+</body>
+
+</html>
