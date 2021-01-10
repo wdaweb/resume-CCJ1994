@@ -8,10 +8,6 @@
     $('#menubtn').click(function(){      
       $('.burger').toggleClass('toggle');      
     })
-    
-    
-    
-
     // scroll to id
     $("#mainMenu a").click(function () {
       let who = $(this).not("#cover").attr("href");
@@ -122,5 +118,3 @@
       }
       
     }
-    
-

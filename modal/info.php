@@ -1,19 +1,13 @@
-<?php
-$sql="select * from info"; 
-$row=$pdo->query($sql)->fetch();
-print_r($row);
-?>
-
-<h2><?=$tstr[$do];?></h2>
-<div>聯絡資料
-  <form action="./api/edit.php">
+<form action="./api/add.php" method="post">
+  <h4 class="text-center"><?=$addstr[$do];?></h4>
+  <div class="text-center">
+    <input type="hidden" name="table" value="<?=$do;?>">
   <ul>
     <li>電話：
-      <input type="text" name="tel" value="<?=$row['tel'];?>">
+      <input type="text" name="tel">
     </li>
     <li>地址：
-      <select name="addr">
-        <option value="<?=$row['addr'];?>" selected ><?=$row['addr'];?></option>
+      <select name="addr" id="">
         <option value="基隆市">基隆市</option>
         <option value="新北市">新北市</option>
         <option value="台北市">台北市</option>
@@ -39,12 +33,13 @@ print_r($row);
       </select>
     </li>
     <li>信箱：
-      <input type="email" name="email" value="<?=$row['email'];?>">
+      <input type="email" name="email">
     </li>
     <li>自傳：
-      <textarea name="intro" cols="30" rows="10"><?=$row['intro'];?></textarea>
+      <textarea name="intro" cols="30" rows="10"></textarea>
     </li>
   </ul>
-    <input type="submit" value="修改儲存">
-  </form>
-</div>
+  </div>
+    <input type="submit" value="新增">
+    
+</form>
