@@ -1,4 +1,4 @@
-
+4
 <?php
 include_once "../base.php";
 
@@ -13,7 +13,7 @@ if($chk>0){
   $_SESSION['login']=$acc;
   header("location:../backend.php");
 }else{
-  header("location:../index.html");
+  header("location:../index.php");
 
 }
 

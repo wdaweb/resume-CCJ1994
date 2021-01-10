@@ -1,3 +1,6 @@
+<?php
+include_once "base.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +29,7 @@
           <div class="subtitle">Welcome,</div>
           <div class="subtitle">Update Info</div>
         </div>
-        <form action="api/chk.php" method="post">
+        <form action="api/login.php" method="post">
           <div class="form-floating my-2 ">
             <input type="text" class="form-control border-0" id="floatingInput" placeholder="account" name="acc" required>
             <label for="floatingInput">Account</label>
@@ -86,7 +89,25 @@
           </li>
           <li class="nav-item mx-3">
             <div style="width: 70px;">
-              <button id="login" class="nav-link btn border-0"><i class="fas fa-user-circle fa-1x"></i></button>
+              
+                <?php
+                if(empty($_SESSION['login'])){
+                  ?>
+                <button id="login" class="nav-link btn border-0">
+                  <i class="fas fa-user-circle fa-1x"></i>
+                </button>
+                <?php
+                }else{
+                ?>
+                <a href="api/logout.php">
+                  <button class="nav-link btn border-0">
+                    <i class='fas fa-sign-out-alt fa-1x'></i>
+                  </button>
+                </a>
+                <?php
+                }
+                ?>
+              
             </div>
             
           </li>
