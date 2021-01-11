@@ -73,6 +73,8 @@ if(empty($_SESSION['login'])){
       <?php
       if(isset($_GET['do'])){
         include "modal/".$do.".php";
+      }else{
+        include "modal/info.php";
       }
       
       ?>

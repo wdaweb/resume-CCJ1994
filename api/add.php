@@ -10,5 +10,5 @@ $data['intro']=$_POST['intro'];
 $sql="insert into " .$table. "(`".implode("`,`",array_keys($data))."`) 
       values ('".implode("','",$data)."')";
 $pdo->exec($sql);
-// header ("location:../backend.php?do=".$table);
+header ("location:../backend.php?do=".$table);
 ?>

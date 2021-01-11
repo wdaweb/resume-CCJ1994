@@ -41,5 +41,4 @@
   </ul>
   </div>
     <input type="submit" value="新增">
-    
 </form>
