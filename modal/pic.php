@@ -35,12 +35,6 @@
     <li>信箱：
       <input type="email" name="email">
     </li>
-    <li>學校：
-      <input type="text" name="school">
-    </li>
-    <li>主修：
-      <input type="text" name="major">
-    </li>
     <li>自傳：
       <textarea name="intro" cols="30" rows="10"></textarea>
     </li>

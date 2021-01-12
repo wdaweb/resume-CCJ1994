@@ -27,15 +27,15 @@ if(empty($_SESSION['login'])){
       <a class="navbar-brand" href="index.php"><img src="./img/logo.png" width="40px"></a>
     </div>
   </header>
-  <div class="d-flex container">
-    <aside class="col-4">
-      <nav class="">
+  <div class="d-flex container" >
+    <aside class="col-4 d-flex justify-content-center ">
+      <nav class=" ">
         <ul>
         <a style="color:#000;text-decoration:none;" href="?do=info">
           <li>個人資料管理</li>
         </a>
         <a style="color:#000;text-decoration:none;" href="?do=exp">
-          <li>學經歷管理</li>
+          <li>經歷管理</li>
         </a>
         <a style="color:#000;text-decoration:none;" href="?do=condition">
           <li>求職條件管理</li>

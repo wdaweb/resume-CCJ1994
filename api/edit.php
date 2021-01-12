@@ -7,20 +7,47 @@ foreach($_POST['id'] as $key => $id){
     $sql=" delete from $table where `id`='{$id}'";
     $pdo->exec($sql);
   }else{
-    $sql="select * from {$table}"; 
+    $sql="select * from $table where `id`='{$id}'"; 
     $row=$pdo->query($sql)->fetch();
-  
+    // print_r($row);
+    
   switch($table){
     case 'info':
       $row['tel']=$_POST['tel'];
       $row['addr']=$_POST['addr'];
       $row['email']=$_POST['email'];
+      $row['school']=$_POST['school'];
+      $row['major']=$_POST['major'];
       $row['intro']=$_POST['intro'];
-      $sql="update $table set `tel`='{$_POST['tel']}',`addr`='{$_POST['addr']}',`email`='{$_POST['email']}',`intro`='{$_POST['intro']}'";
+      $sql="update $table set `tel`='{$row['tel']}',`addr`='{$row['addr']}',`email`='{$row['email']}',`intro`='{$row['intro']}' where `id`='{$id}'";
+    break;
+    case 'exp':
+      $row['year']=$_POST['year'][$key];
+      $row['month']=$_POST['month'][$key];
+      $row['company']=$_POST['company'][$key];
+      $row['job']=$_POST['job'][$key];
+      $row['sh']=(in_array($id,$_POST['sh']))?1:0;
+      $sql="update $table set `year`='{$row['year']}',`month`='{$row['month']}',
+      `company`='{$row['company']}',`job`='{$row['job']}',`sh`='{$row['sh']}' where `id`='{$id}'";
+    break;
+    case 'condition':
+
+    break;
+    case 'work':
+
+    break;
+    case 'pic':
+
+    break;
+    case 'menu':
+
     break;
   }
   $pdo->exec($sql);
 }
 }
-header ("location:../backend.php?do=info");
+
+echo "<br>";
+print_r($_POST);
+header ("location:../backend.php?do=$table");
 ?>

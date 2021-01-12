@@ -50,11 +50,15 @@ $rows=$pdo->query($sql)->fetchAll();
     刪除<input type="checkbox" name="del[]" value="<?=$row['id'];?>">
     </li>
   </ul>
-    <input type="submit" value="儲存">
     <input type="hidden" name="id[]" value="<?=$row['id'];?>">
-    <input type="hidden" name="table" value="<?=$do;?>">
     <?php
   }
+  if(!empty($row)){
+    ?>
+  <input type="submit" value="儲存">
+  <?php
+  }
   ?>
+  <input type="hidden" name="table" value="<?=$do;?>">
   </form>
 </div>
