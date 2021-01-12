@@ -43,6 +43,9 @@ $rows=$pdo->query($sql)->fetchAll();
     <li>信箱：
       <input type="email" name="email" value="<?=$row['email'];?>">
     </li>
+    <li>擅長職位：
+      <input type="text" name="position" value="<?=$row['position'];?>">
+    </li>
     <li>自傳：
       <textarea name="intro" cols="30" rows="5"><?=$row['intro'];?></textarea>
     </li>

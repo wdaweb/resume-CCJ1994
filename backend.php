@@ -37,10 +37,10 @@ if(empty($_SESSION['login'])){
         <a style="color:#000;text-decoration:none;" href="?do=exp">
           <li>經歷管理</li>
         </a>
-        <a style="color:#000;text-decoration:none;" href="?do=condition">
-          <li>求職條件管理</li>
+        <a style="color:#000;text-decoration:none;" href="?do=jobskill">
+          <li>求職技能管理</li>
         </a>
-        <a style="color:#000;text-decoration:none;" href="?do=work">
+        <a style="color:#000;text-decoration:none;" href="?do=mywork">
           <li>作品管理</li>
         </a>
         <a style="color:#000;text-decoration:none;" href="?do=pic">

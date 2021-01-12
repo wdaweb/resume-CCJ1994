@@ -22,20 +22,12 @@ $rows=$pdo->query($sql)->fetchAll();
 
   <div style="display:flex;justify-content:space-around;flex-wrap:wrap;">
     <div class="d-flex flex-column align-items-center">
-      <div>年份</div>
-      <div><input type="text" name="year[]" value="<?=$row['year'];?>"></div>
+      <div>技能/工具</div>
+      <div><input type="text" name="skill[]" value="<?=$row['skill'];?>"></div>
     </div>
     <div class="d-flex flex-column align-items-center">
-      <div>月份</div>
-      <div><input type="text" name="month[]" value="<?=$row['month'];?>"></div>
-    </div>
-    <div class="d-flex flex-column align-items-center">
-      <div>公司</div>
-      <div><input type="text" name="company[]" value="<?=$row['company'];?>"></div>
-    </div>
-    <div class="d-flex flex-column align-items-center">
-      <div>職位</div>
-      <div><textarea name="job[]" rows="5"><?=$row['job'];?></textarea></div>
+      <div>擅長程度</div>
+      <div><input type="text" name="level[]" value="<?=$row['level'];?>">％</div>
     </div>
     <div class="d-flex flex-column align-items-center">
       <div>顯示</div>

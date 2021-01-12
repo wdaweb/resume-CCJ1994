@@ -3,14 +3,11 @@
   <div class="text-center">
     <input type="hidden" name="table" value="<?=$do;?>">
   <ul>
-    <li>擅長職位:
-      <input type="text" name="tel">
+    <li>技能/工具：
+      <input type="text" name="skill">
     </li>
-    <li>信箱：
-      <input type="email" name="email">
-    </li>
-    <li>自傳：
-      <textarea name="intro" cols="30" rows="10"></textarea>
+    <li>擅長程度：
+    <input type="number" name="level">％
     </li>
   </ul>
   </div>

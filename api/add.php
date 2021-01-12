@@ -2,13 +2,16 @@
 include_once "../base.php";
 $table=$_POST['table'];
 $data=[];
+if(!empty($_FILES['img']['tmp_name'])){
+      move_uploaded_file($_FILES['img']['tmp_name'],'../image/'.$_FILES['img']['name']);
+      $data['img']=$_FILES['img']['name'];
+}
 switch($table){
       case 'info':
             $data['tel']=$_POST['tel'];
             $data['addr']=$_POST['addr'];
             $data['email']=$_POST['email'];
-            $data['school']=$_POST['school'];
-            $data['major']=$_POST['major'];
+            $data['position']=$_POST['position'];
             $data['intro']=$_POST['intro'];
       break;
       case 'exp':
@@ -16,6 +19,17 @@ switch($table){
             $data['month']=$_POST['month'];
             $data['company']=$_POST['company'];
             $data['job']=$_POST['job'];
+            $data['sh']=0;
+      break;
+      case 'jobskill':
+            $data['skill']=$_POST['skill'];
+            $data['level']=$_POST['level'];
+            $data['sh']=0;
+      break;
+      case 'mywork':
+            $data['type']=$_POST['type'];
+            $data['text']=$_POST['text'];
+            $data['sh']=0;
       break;
 }
 
