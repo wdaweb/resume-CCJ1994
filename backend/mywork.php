@@ -35,9 +35,10 @@ $rows=$pdo->query($sql)->fetchAll();
       <div>作品</div>
       <div><img src="./image/<?=$row['img'];?>" style="width:100px;height:68px"></div>
     </div>
-    <li>描述：
-      <textarea name="text" cols="30" rows="5"><?=$row['text'];?></textarea>
-    </li>
+    <div>
+      <div>描述：</div>
+      <textarea name="text[]" cols="30" rows="5"><?=$row['text'];?></textarea>
+    </div>
     <div class="d-flex flex-column align-items-center">
       <div>顯示</div>
       <div><input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>></div>
@@ -46,16 +47,39 @@ $rows=$pdo->query($sql)->fetchAll();
       <div>刪除</div>
       <div><input type="checkbox" name="del[]" value="<?=$row['id'];?>"></div>
     </div>
-    <input type="hidden" name="id[]" value="<?=$row['id'];?>">
+    <div>
+      <button class="chgbtn" type="button" onclick="op('#chgModal','.chgContent','./modal/upload.php?table=<?=$do;?>&id=<?=$row['id'];?>')">更換圖片</button>
+    </div>
   </div>
+  <input type="hidden" name="id[]" value="<?=$row['id'];?>">
+
   <?php
   }
   if(!empty($row)){
 
     ?>
+
   <input type="submit" value="儲存">
   <?php
   }
   ?>
   <input type="hidden" name="table" value="<?=$do;?>">
 </form>
+<div id="chgModal" style="display:none;">
+  <div class="chgModal"></div>
+  <div class="chgContent">
+    <h3 class="text-center">更新圖片</h3>
+    <!-- <form action="./api/edit.php" method="post" enctype="multipart/form-data">
+      <div class="d-flex flex-column  align-items-center">
+        <input type="hidden" name="id" value="<?=$row['id'];?>">
+        <div><input type="file" name="img"></div>
+        <div>
+          <input type="submit" value="更換">
+        </div>
+        <div>
+          <button class="cancelbtn" type="button">取消</button>
+        </div>
+      </div>
+    </form> -->
+  </div>
+</div>

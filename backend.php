@@ -14,11 +14,14 @@ if(empty($_SESSION['login'])){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>admin</title>
   <link rel="shortcut icon" type="image/x-ico" href="img/favicon.ico">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/backendstyle.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/backendstyle.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&family=Ubuntu:wght@700&display=swap"
     rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/jquery-3.5.1.min.js"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/7e94f0c211.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -82,11 +85,9 @@ if(empty($_SESSION['login'])){
       <button class="backbtn">取消</button>
     </div>
   </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/backend.js"></script>
+  
     
+    <script src="./js/backend.js"></script>
   </body>
 </html>
 <?php
