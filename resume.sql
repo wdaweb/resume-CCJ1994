@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2021 年 01 月 12 日 16:54
+-- 產生時間： 2021 年 01 月 14 日 17:03
 -- 伺服器版本： 10.4.14-MariaDB
 -- PHP 版本： 7.4.10
 
@@ -113,6 +113,20 @@ INSERT INTO `jobskill` (`id`, `skill`, `level`, `sh`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `menu`
+--
+
+CREATE TABLE `menu` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `menu` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `href` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parent` int(11) UNSIGNED DEFAULT 0,
+  `sh` tinyint(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `mywork`
 --
 
@@ -129,9 +143,27 @@ CREATE TABLE `mywork` (
 --
 
 INSERT INTO `mywork` (`id`, `type`, `img`, `text`, `sh`) VALUES
-(1, 1, 'calendar.png', 'calendar', 0),
-(7, 2, '11147.jpg', 'logo', 0),
-(8, 2, '11147.jpg', 'logo', 0);
+(8, 1, '螢幕快照 2020-11-22 上午1.18.55.png', '4egr', 0);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `pic`
+--
+
+CREATE TABLE `pic` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `img` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sh` tinyint(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `pic`
+--
+
+INSERT INTO `pic` (`id`, `img`, `text`, `sh`) VALUES
+(1, 'IMG_4364.png', 'reggreh', 1);
 
 --
 -- 已傾印資料表的索引
@@ -162,9 +194,21 @@ ALTER TABLE `jobskill`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `mywork`
 --
 ALTER TABLE `mywork`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `pic`
+--
+ALTER TABLE `pic`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -196,10 +240,22 @@ ALTER TABLE `jobskill`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `mywork`
 --
 ALTER TABLE `mywork`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `pic`
+--
+ALTER TABLE `pic`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
