@@ -11,12 +11,8 @@
     $(".backbtn").click(function () {
       $("#addModal").fadeOut();
     });
-    // $(".chgbtn").click(function(){
-    //   $("#chgModal").fadeIn();
-    // });
-    $(".cancelbtn").click(function () {
-      $("#chgModal").fadeOut();
-    });
+    
+    
     $(".chgModal").click(function () {
       $("#chgModal").fadeOut();
     });

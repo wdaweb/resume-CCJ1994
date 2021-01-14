@@ -10,3 +10,11 @@
   <input type="hidden" name="table" value="<?=$_GET['table'];?>">
   <input type="hidden" name="id" value="<?=$_GET['id'];?>">
 </form>
+<div>
+  <button class="cancelbtn" type="button">取消</button> 
+</div> 
+<script>
+$(".cancelbtn").click(function () {
+      $("#chgModal").fadeOut();
+    });
+</script>

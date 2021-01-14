@@ -68,18 +68,7 @@ $rows=$pdo->query($sql)->fetchAll();
 <div id="chgModal" style="display:none;">
   <div class="chgModal"></div>
   <div class="chgContent">
-    <h3 class="text-center">更新圖片</h3>
-    <!-- <form action="./api/edit.php" method="post" enctype="multipart/form-data">
-      <div class="d-flex flex-column  align-items-center">
-        <input type="hidden" name="id" value="<?=$row['id'];?>">
-        <div><input type="file" name="img"></div>
-        <div>
-          <input type="submit" value="更換">
-        </div>
-        <div>
-          <button class="cancelbtn" type="button">取消</button>
-        </div>
-      </div>
-    </form> -->
+    
+      
   </div>
 </div>

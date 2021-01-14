@@ -19,23 +19,34 @@ switch($table){
             $data['month']=$_POST['month'];
             $data['company']=$_POST['company'];
             $data['job']=$_POST['job'];
-            $data['sh']=0;
+            $data['sh']=1;
       break;
       case 'jobskill':
             $data['skill']=$_POST['skill'];
             $data['level']=$_POST['level'];
-            $data['sh']=0;
+            $data['sh']=1;
       break;
       case 'mywork':
             $data['type']=$_POST['type'];
             $data['text']=$_POST['text'];
-            $data['sh']=0;
+            $data['sh']=1;
       break;
+      case 'pic':
+            $data['text']=$_POST['text'];
+            $data['sh']=1;
+      break;
+      case 'menu':
+            $data['menu']=$_POST['menu'];
+            $data['href']=$_POST['href'];
+            $data['sh']=1;
+      break;
+            
 }
 
 // print_r($data);
 $sql="insert into " .$table. "(`".implode("`,`",array_keys($data))."`) 
       values ('".implode("','",$data)."')";
 $pdo->exec($sql);
+// echo $sql;
 header ("location:../backend.php?do=".$table);
 ?>

@@ -44,10 +44,17 @@ foreach($_POST['id'] as $key => $id){
       `sh`='{$row['sh']}' where `id`='{$id}'";
     break;
     case 'pic':
-
+      $row['text']=$_POST['text'][$key];
+      $row['sh']=(in_array($id,$_POST['sh']))?1:0;
+      $sql="update $table set `text`='{$row['text']}',
+      `sh`='{$row['sh']}' where `id`='{$id}'";
     break;
     case 'menu':
-
+      $row['menu']=$_POST['menu'][$key];
+      $row['href']=$_POST['href'][$key];
+      $row['sh']=(in_array($id,$_POST['sh']))?1:0;
+      $sql="update $table set `menu`='{$row['menu']}',`href`='{$row['href']}',
+      `sh`='{$row['sh']}' where `id`='{$id}'";
     break;
   }
   $pdo->exec($sql);
