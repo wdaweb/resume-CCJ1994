@@ -1,4 +1,3 @@
-4
 <?php
 include_once "../base.php";
 
@@ -6,7 +5,7 @@ include_once "../base.php";
 $acc=$_POST['acc'];
 $pw=$_POST['pw'];
 
-$sql="select count(*) from admin where `acc`='$acc' && `pw`='$pw' ";
+$sql="select count(*) from resume_admin where `acc`='$acc' && `pw`='$pw' ";
 $chk=$pdo->query($sql)-> fetchColumn() ;
 
 if($chk>0){

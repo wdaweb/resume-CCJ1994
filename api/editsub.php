@@ -2,7 +2,7 @@
 include_once "../base.php";
 
 
-print_r($_POST);
+// print_r($_POST);
 
 
 foreach($_POST['id'] as $key => $id){
@@ -16,7 +16,7 @@ foreach($_POST['id'] as $key => $id){
         $row['menu']=$_POST['menu'][$key];
         $row['href']=$_POST['href'][$key];
         $sql_row="update {$_POST['table']} set `menu`='{$row['menu']}',`href`='{$row['href']}' where `id`='{$id}'";
-        // $pdo->exec($sql_row;
+        $pdo->exec($sql_row);
         
     }
 }
@@ -42,6 +42,6 @@ if(isset($_POST['menu2'])){
 }
 
 
-// header ("location:../backend.php?do=menu");
+header ("location:../backend.php?do={$_POST['table']}");
 
 ?>

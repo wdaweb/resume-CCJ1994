@@ -1,10 +1,9 @@
 <?php
 include_once "../base.php";
-// echo $_GET['id'];
 // print_r($_GET);
 $sql="select * from {$_GET['table']} where `parent`='{$_GET['id']}'";
 $subs=$pdo->query($sql)->fetchAll();
-print_r($subs);
+// print_r($subs);
 ?>
 
 <h3>編輯次選單</h3>

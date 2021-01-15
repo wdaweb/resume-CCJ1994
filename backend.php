@@ -34,22 +34,22 @@ if(empty($_SESSION['login'])){
     <aside class="col-4 d-flex justify-content-center ">
       <nav class=" ">
         <ul>
-        <a style="color:#000;text-decoration:none;" href="?do=info">
+        <a style="color:#000;text-decoration:none;" href="?do=resume_info">
           <li>個人資料管理</li>
         </a>
-        <a style="color:#000;text-decoration:none;" href="?do=exp">
+        <a style="color:#000;text-decoration:none;" href="?do=resume_exp">
           <li>經歷管理</li>
         </a>
-        <a style="color:#000;text-decoration:none;" href="?do=jobskill">
+        <a style="color:#000;text-decoration:none;" href="?do=resume_jobskill">
           <li>求職技能管理</li>
         </a>
-        <a style="color:#000;text-decoration:none;" href="?do=mywork">
+        <a style="color:#000;text-decoration:none;" href="?do=resume_mywork">
           <li>作品管理</li>
         </a>
-        <a style="color:#000;text-decoration:none;" href="?do=pic">
+        <a style="color:#000;text-decoration:none;" href="?do=resume_pic">
           <li>圖片管理</li>
         </a>
-        <a style="color:#000;text-decoration:none;" href="?do=menu">
+        <a style="color:#000;text-decoration:none;" href="?do=resume_menu">
           <li>選單標題管理</li>
         </a>
         </ul>
@@ -57,12 +57,12 @@ if(empty($_SESSION['login'])){
     </aside>
     <section class="col-8">
       <?php
-      $do=(isset($_GET['do']))?$_GET['do']:'info';
+      $do=(isset($_GET['do']))?$_GET['do']:'resume_info';
       $file="./backend/".$do.".php";
       if(file_exists($file)){
         include $file;
       }else{
-        include "./backend/info.php";
+        include "./backend/resume_info.php";
       }
       ?>
   <button id="addbtn" type="button"><?=$addstr[$do];?></button>
@@ -77,7 +77,7 @@ if(empty($_SESSION['login'])){
       if(isset($_GET['do'])){
         include "modal/".$do.".php";
       }else{
-        include "modal/info.php";
+        include "modal/resume_info.php";
       }
       
       ?>

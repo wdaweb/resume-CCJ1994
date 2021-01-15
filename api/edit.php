@@ -12,7 +12,7 @@ foreach($_POST['id'] as $key => $id){
     // print_r($row);
     
   switch($table){
-    case 'info':
+    case 'resume_info':
       $row['tel']=$_POST['tel'];
       $row['addr']=$_POST['addr'];
       $row['email']=$_POST['email'];
@@ -20,7 +20,7 @@ foreach($_POST['id'] as $key => $id){
       $row['intro']=$_POST['intro'];
       $sql="update $table set `tel`='{$row['tel']}',`addr`='{$row['addr']}',`email`='{$row['email']}',`intro`='{$row['intro']}' where `id`='{$id}'";
     break;
-    case 'exp':
+    case 'resume_exp':
       $row['year']=$_POST['year'][$key];
       $row['month']=$_POST['month'][$key];
       $row['company']=$_POST['company'][$key];
@@ -29,27 +29,27 @@ foreach($_POST['id'] as $key => $id){
       $sql="update $table set `year`='{$row['year']}',`month`='{$row['month']}',
       `company`='{$row['company']}',`job`='{$row['job']}',`sh`='{$row['sh']}' where `id`='{$id}'";
     break;
-    case 'jobskill':
+    case 'resume_jobskill':
       $row['skill']=$_POST['skill'][$key];
       $row['level']=$_POST['level'][$key];
       $row['sh']=(in_array($id,$_POST['sh']))?1:0;
       $sql="update $table set `skill`='{$row['skill']}',`level`='{$row['level']}',
       `sh`='{$row['sh']}' where `id`='{$id}'";
     break;
-    case 'mywork':
+    case 'resume_mywork':
       $row['type']=$_POST['type'][$key];
       $row['text']=$_POST['text'][$key];
       $row['sh']=(in_array($id,$_POST['sh']))?1:0;
       $sql="update $table set `type`='{$row['type']}',`text`='{$row['text']}',
       `sh`='{$row['sh']}' where `id`='{$id}'";
     break;
-    case 'pic':
+    case 'resume_pic':
       $row['text']=$_POST['text'][$key];
       $row['sh']=(in_array($id,$_POST['sh']))?1:0;
       $sql="update $table set `text`='{$row['text']}',
       `sh`='{$row['sh']}' where `id`='{$id}'";
     break;
-    case 'menu':
+    case 'resume_menu':
       $row['menu']=$_POST['menu'][$key];
       $row['href']=$_POST['href'][$key];
       $row['sh']=(in_array($id,$_POST['sh']))?1:0;
