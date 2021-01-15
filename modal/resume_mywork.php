@@ -5,9 +5,9 @@
   <ul>
     <li>作品類型：
       <select name="type">
-        <option value="1">網頁設計</option>
-        <option value="2">平面設計</option>
-        <option value="3">攝影</option>
+        <option value="1">Web Design</option>
+        <option value="2">Graphic Design</option>
+        <option value="3">Photography</option>
       </select>
     </li>
     <li>作品：

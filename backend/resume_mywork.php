@@ -25,9 +25,9 @@ $rows=$pdo->query($sql)->fetchAll();
       <div>作品類型</div>
       <div>
         <select name="type[]">
-          <option value="1" <?=($row['type']=='1')?'selected':'';?>>網頁設計</option>
-          <option value="2" <?=($row['type']=='2')?'selected':'';?>>平面設計</option>
-          <option value="3" <?=($row['type']=='3')?'selected':'';?>>攝影</option>
+          <option value="1" <?=($row['type']=='1')?'selected':'';?>>Web Design</option>
+          <option value="2" <?=($row['type']=='2')?'selected':'';?>>Graphic Design</option>
+          <option value="3" <?=($row['type']=='3')?'selected':'';?>>Photography</option>
         </select>
       </div>
     </div>

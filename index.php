@@ -52,7 +52,14 @@ include_once "base.php";
   <!-- 選單區 -->
   <header id="meMenu" class="fixed-top nbr">
     <nav class="navbar navbar-expand-lg navbar-light container">
-      <a class="navbar-brand" href="#meHome"><img src="./img/logo.svg" width="40px"></a>
+      <?php if(isset($_SESSION['login'])){ ?>
+      <a class="navbar-brand" href="backend.php">
+      <?php }else{ ?>
+        <a class="navbar-brand" href="#meHome">
+        <?php };  ?>
+      
+        <img src="./img/logo.svg" width="40px">
+      </a>
       <button id="menubtn" class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainMenu">
         <div class="burger">
           <div class="line1"></div>
@@ -497,7 +504,7 @@ include_once "base.php";
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM6">
                 <img src="./img/puffing.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
-                  <h5 class="subtitle text-center">Graphic Design<br>-Postcard</h5>
+                  <h5 class="subtitle text-center">Photography<br>-Postcard</h5>
                 </div>
               </div>
             </div>
@@ -594,7 +601,7 @@ include_once "base.php";
                 <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM6">
                   <img src="./img/puffing.png" class="card-img-top">
                   <div class="d-flex align-items-center justify-content-center hoverContent">
-                    <h5 class="subtitle text-center">Graphic Design<br>-Postcard</h5>
+                    <h5 class="subtitle text-center">Photography<br>-Postcard</h5>
                   </div>
                 </div>
               </div>
@@ -694,7 +701,7 @@ include_once "base.php";
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Graphic Design-Postcard</h5>
+            <h5 class="modal-title">Photography-Postcard</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
@@ -770,7 +777,7 @@ include_once "base.php";
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Graphic Design-Postcard</h5>
+            <h5 class="modal-title">Graphic Design-Game</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
