@@ -9,7 +9,8 @@ $tstr=[
   'resume_jobskill'=>'求職技能管理',
   'resume_mywork'=>'作品集管理',
   'resume_pic'=>'圖片管理 ',
-  'resume_menu'=>'選單管理'
+  'resume_menu'=>'選單管理',
+  'resume_message'=>'Message'
 ];
 $addstr=[
   'resume_info'=>'新增個人資料',

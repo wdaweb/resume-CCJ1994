@@ -1,3 +1,45 @@
+/* sidebar */
+@media (max-width: 767.98px) {
+  .sidebar {
+    background: #fff;
+    position: fixed;
+    z-index: 999;
+  }
+}
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+.rounded-pill{
+  background-color: #ffdc68;
+}
+/* msg */
+.msgpart{
+  padding: 30px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: -1px -1px 7px #ffffff73,
+  1px 1px 5px rgba(94,104,121,0.288);
+}
 /* modal */
 #addModal{
   top: 0px;

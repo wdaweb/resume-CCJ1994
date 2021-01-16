@@ -1,14 +1,20 @@
 <?php
 include_once "../base.php";
 $table=$_POST['table'];
+    print_r($_POST);
+
 
 foreach($_POST['id'] as $key => $id){
   if(!empty($_POST['del']) && in_array($id,$_POST['del'])){
     $sql=" delete from $table where `id`='{$id}'";
+    echo $sql;
     $pdo->exec($sql);
+    
   }else{
+    
     $sql="select * from $table where `id`='{$id}'"; 
-    $row=$pdo->query($sql)->fetch();
+    // echo $sql;
+    $row=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     // print_r($row);
     
   switch($table){
@@ -56,12 +62,16 @@ foreach($_POST['id'] as $key => $id){
       $sql="update $table set `menu`='{$row['menu']}',`href`='{$row['href']}',
       `sh`='{$row['sh']}' where `id`='{$id}'";
     break;
+    case 'resume_message':
+      $row['sh']=(in_array($id,$_POST['sh']))?1:0;
+      $sql="update $table set `sh`='{$row['sh']}' where `id`='{$id}'";
+    break;
   }
   $pdo->exec($sql);
 }
 }
 
-echo "<br>";
-print_r($_POST);
+
+
 header ("location:../backend.php?do=$table");
 ?>

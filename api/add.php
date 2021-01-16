@@ -40,7 +40,6 @@ switch($table){
             $data['href']=$_POST['href'];
             $data['sh']=1;
       break;
-            
 }
 
 // print_r($data);
@@ -48,5 +47,6 @@ $sql="insert into " .$table. "(`".implode("`,`",array_keys($data))."`)
       values ('".implode("','",$data)."')";
 $pdo->exec($sql);
 // echo $sql;
+
 header ("location:../backend.php?do=".$table);
 ?>

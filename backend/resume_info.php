@@ -2,7 +2,10 @@
 $sql="select * from {$do}"; 
 $rows=$pdo->query($sql)->fetchAll();
 ?>
-<h2><?=$tstr[$do];?></h2>
+<div
+  class="pt-3 pb-2 mb-3 border-bottom">
+  <h2><?=$tstr[$do];?></h2>
+</div>
 <div>聯絡資料
   <form action="./api/edit.php" method="post">
   <?php
@@ -64,4 +67,6 @@ $rows=$pdo->query($sql)->fetchAll();
   ?>
   <input type="hidden" name="table" value="<?=$do;?>">
   </form>
+  <button id="addbtn" type="button"><?=$addstr[$do];?></button>
+
 </div>
