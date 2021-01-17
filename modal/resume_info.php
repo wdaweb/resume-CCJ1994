@@ -1,13 +1,24 @@
 <form action="./api/add.php" method="post">
-  <h4 class="text-center"><?=$addstr[$do];?></h4>
-  <div class="text-center">
-    <input type="hidden" name="table" value="<?=$do;?>">
-  <ul>
-    <li>電話：
-      <input type="text" name="tel">
-    </li>
-    <li>地址：
-      <select name="addr" id="">
+  <div class="text-end my-2 border-bottom addtitle">
+    <h4 ><?=$addstr[$do];?></h4>
+  </div>
+  <div class="row g-3 text-muted">
+    <div class="col-md-7">
+      <label for="infoEmail" class="form-label">Email</label>
+      <input class="form-control" id="infoEmail" type="email" name="email">
+    </div>
+    <div class="col-md-5">
+      <label for="infoTel" class="form-label">Phone Number</label>
+      <input class="form-control" id="infoTel" type="text" name="tel">
+    </div>
+    <div class="col-6">
+      <label for="infoPosition" class="form-label">Position</label>
+      <input class="form-control" id="infoPosition" type="text" name="position">
+    </div>
+    <div class="col-6">
+      <label for="infoAddress" class="form-label">Address</label>
+      <select select name="addr" id="infoAddress" class="form-select">
+        <option selected>請選擇</option>
         <option value="基隆市">基隆市</option>
         <option value="新北市">新北市</option>
         <option value="台北市">台北市</option>
@@ -31,17 +42,19 @@
         <option value="金門縣">金門縣</option>
         <option value="連江縣">連江縣</option>
       </select>
-    </li>
-    <li>信箱：
-      <input type="email" name="email">
-    </li>
-    <li>擅長職位：
-      <input type="text" name="position">
-    </li>
-    <li>自傳：
-      <textarea name="intro" cols="30" rows="10"></textarea>
-    </li>
-  </ul>
+    </div>
+    <div class="col-md-12">
+      <label for="infoIntro" class="form-label">Autobiography</label>
+      <textarea type="text" class="form-control" id="infoIntro" name="intro"></textarea>
+      <input type="hidden" name="table" value="<?=$do;?>">
+    </div>
   </div>
-    <input type="submit" value="新增">
-</form>
+  <div class="d-flex my-2 align-items-center">
+    <div class="me-2">
+      <input type="submit" class="btn saveBtn" value="Add it!">
+    </div>
+  </form>
+  <div>
+    <button class="backbtn btn btn-outline-secondary">Cancel</button>
+  </div>
+</div>

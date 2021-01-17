@@ -2,23 +2,33 @@
 $sql="select * from {$do}"; 
 $rows=$pdo->query($sql)->fetchAll();
 ?>
-<div
-  class="pt-3 pb-2 mb-3 border-bottom">
-  <h2><?=$tstr[$do];?></h2>
-</div>
-<div>聯絡資料
-  <form action="./api/edit.php" method="post">
-  <?php
-  foreach($rows as $row){
-
-    ?>
- 
-  <ul>
-    <li>電話：
-      <input type="text" name="tel" value="<?=$row['tel'];?>">
-    </li>
-    <li>地址：
-      <select name="addr">
+<form action="./api/edit.php" method="post">
+  <div class="d-flex justify-content-between pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="title"><?=$tstr[$do];?></h2>
+  </div>
+  <?php if(empty($rows)){ ?>
+    <div class="d-flex align-content-center justify-content-center">
+      <div class="mx-3 text-muted"><h2>目前無任何資料，請新增</h2></div>
+      <div><button id="addbtn" class="btn btn-outline-secondary" type="button"><?=$addstr[$do];?></button></div>
+    </div>
+  <?php } ?>
+  <div class="row g-3 text-muted">
+    <?php foreach($rows as $row){ ?>
+    <div class="col-md-7">
+      <label for="infoEmail" class="form-label">Email</label>
+      <input class="form-control" id="infoEmail" type="email" name="email" value="<?=$row['email'];?>">
+    </div>
+    <div class="col-md-5">
+      <label for="infoTel" class="form-label">Phone Number</label>
+      <input class="form-control" id="infoTel" type="text" name="tel" value="<?=$row['tel'];?>">
+    </div>
+    <div class="col-6">
+      <label for="infoPosition" class="form-label">Position</label>
+      <input class="form-control" id="infoPosition" type="text" name="position" value="<?=$row['position'];?>">
+    </div>
+    <div class="col-6">
+      <label for="infoAddress" class="form-label">Address</label>
+      <select select name="addr" id="infoAddress" class="form-select">
         <option value="基隆市" <?=($row['addr']=='基隆市')?'selected':'';?>>基隆市</option>
         <option value="新北市" <?=($row['addr']=='新北市')?'selected':'';?>>新北市</option>
         <option value="台北市" <?=($row['addr']=='台北市')?'selected':'';?>>台北市</option>
@@ -42,31 +52,27 @@ $rows=$pdo->query($sql)->fetchAll();
         <option value="金門縣" <?=($row['addr']=='金門縣')?'selected':'';?>>金門縣</option>
         <option value="連江縣" <?=($row['addr']=='連江縣')?'selected':'';?>>連江縣</option>
       </select>
-    </li>
-    <li>信箱：
-      <input type="email" name="email" value="<?=$row['email'];?>">
-    </li>
-    <li>擅長職位：
-      <input type="text" name="position" value="<?=$row['position'];?>">
-    </li>
-    <li>自傳：
-      <textarea name="intro" cols="30" rows="5"><?=$row['intro'];?></textarea>
-    </li>
-    <li>
-    刪除<input type="checkbox" name="del[]" value="<?=$row['id'];?>">
-    </li>
-  </ul>
-    <input type="hidden" name="id[]" value="<?=$row['id'];?>">
-    <?php
-  }
-  if(!empty($row)){
-    ?>
-  <input type="submit" value="儲存">
-  <?php
-  }
-  ?>
-  <input type="hidden" name="table" value="<?=$do;?>">
-  </form>
-  <button id="addbtn" type="button"><?=$addstr[$do];?></button>
+    </div>
+    <div class="col-md-12">
+      <label for="infoIntro" class="form-label">Autobiography</label>
+      <textarea type="text" class="form-control" id="infoIntro" name="intro"><?=$row['intro'];?></textarea>
+      <input type="hidden" name="table" value="<?=$do;?>">
+      <input type="hidden" name="id[]" value="<?=$row['id'];?>">
+    </div>
+    <div class="col-12 d-flex align-items-center justify-content-between">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="infoDel" name="del[]" value="<?=$row['id'];?>">
+        <label class="form-check-label" for="infoDel">
+          Delete it!
+        </label>
+      </div>
+      <?php  }
+    if(!empty($row)){ ?>
+    <div>
+      <button type="submit" class="btn saveBtn">Save</button>
+    </div>
+    <?php } ?>
+    </div>
+  </div>
+</form>
 
-</div>

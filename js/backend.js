@@ -11,8 +11,6 @@
     $(".backbtn").click(function () {
       $("#addModal").fadeOut();
     });
-    
-    
     $(".chgModal").click(function () {
       $("#chgModal").fadeOut();
     });

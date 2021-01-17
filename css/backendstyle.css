@@ -1,14 +1,49 @@
+body{
+  background-color: #ecf0f1;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+.title{
+  color: #273c75;
+}
+.addtitle{
+  color: #34495e;
+}
+.addtitle::after{
+  width: 185px;
+  height: 5px;
+  position: absolute;
+  background-color: #ffdc68;
+  content:"";
+  top: 25px;
+  right: 10px;
+  z-index: -1;
+}
+.saveBtn{
+  border:2px solid #273c75;
+  background-color: #273c75;
+  color: #fff;
+}
+.saveBtn:hover{
+  border:2px solid #273c75;
+  background-color: transparent;
+}
+
 /* sidebar */
+
 @media (max-width: 767.98px) {
   .sidebar {
     background: #fff;
     position: fixed;
     z-index: 999;
+    top: 0;
+    padding: 0 !important;
   }
 }
 .sidebar .nav-link {
   font-weight: 500;
-  color: #333;
+  color: #34495e;
 }
 
 .sidebar .nav-link .feather {
@@ -16,32 +51,40 @@
   color: #727272;
 }
 
-.sidebar .nav-link.active {
-  color: #007bff;
-}
+
 
 .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {
   color: inherit;
 }
 
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
-}
 .rounded-pill{
   background-color: #ffdc68;
 }
-/* msg */
-.msgpart{
-  padding: 30px;
+
+
+.part{
+  padding: 10px 15px;
   border-radius: 5px;
   background: #fff;
   box-shadow: -1px -1px 7px #ffffff73,
   1px 1px 5px rgba(94,104,121,0.288);
 }
+/* msg */
+#msgTab .nav-link.active{
+  font-weight: 500;
+  color: #273c75;
+}
+#msgTab .nav-link{
+  color: #95a5a6;
+}
+#msgTabContent .accordion-button{
+background-color:  #ecf0f1 ;
+color: #273c75;
+}
 /* modal */
 #addModal{
+  display:none;
   top: 0px;
   position: fixed;
   z-index: 99999;
@@ -57,12 +100,10 @@
   overflow:auto;
 }
 .addContent{
-  width:600px;
-  height:500px;
   position:absolute;
   z-index:5;
   background:#fff;
-  border-radius: 10px;
+  border-radius: 5px;
   top:0px;
   left:0px;
   right:0px;
