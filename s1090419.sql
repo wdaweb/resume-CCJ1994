@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2021 年 01 月 15 日 02:57
--- 伺服器版本： 5.5.64-MariaDB
--- PHP 版本： 7.3.14
+-- 產生時間： 2021 年 01 月 17 日 16:07
+-- 伺服器版本： 10.4.14-MariaDB
+-- PHP 版本： 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -103,9 +102,9 @@ CREATE TABLE `invoices` (
   `period` tinyint(1) UNSIGNED NOT NULL,
   `payment` int(11) UNSIGNED NOT NULL,
   `date` date NOT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `item` text COLLATE utf8mb4_unicode_ci,
-  `note` text COLLATE utf8mb4_unicode_ci,
+  `create_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `item` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_acc` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -10148,7 +10147,7 @@ CREATE TABLE `login` (
   `acc` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pw` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `create_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -10238,8 +10237,9 @@ CREATE TABLE `resume_exp` (
 --
 
 INSERT INTO `resume_exp` (`id`, `year`, `month`, `company`, `job`, `sh`) VALUES
-(1, '2013-2016', 'September', '銘傳大學', '餐旅管理學系\r\n觀光學院系學會\r\n網路宣傳及攝影組長', 1),
-(2, '2016', 'September-Feb', '台北萬豪酒店', '房務員', 0);
+(1, '2013-2016', 'September', '銘傳大學', '餐旅管理學系\r\n觀光學院系學會\r\n網路宣傳及攝影組長', 0),
+(4, '444', '4444', '3333', '3333', 0),
+(5, '2016', 'September-Feb', '銘傳大學', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum non architecto, doloribus qui nobis voluptates ex error officia magni laboriosam quaerat numquam aperiam iusto facere sint consequuntur excepturi nihil distinctio!\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -10261,7 +10261,7 @@ CREATE TABLE `resume_info` (
 --
 
 INSERT INTO `resume_info` (`id`, `tel`, `addr`, `email`, `position`, `intro`) VALUES
-(4, '0988763353', '新北市', 'ewweter@trge', 'web design | graphic design', 'gi333');
+(8, '0988763353', '新北市', 'a0changj2@gmail.com', 'web design', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum perferendis inventore incidunt dolor harum odio, eos repellat nisi commodi amet alias vitae hic unde. Quos, quas praesentium. Consequuntur, delectus cumque?\r\n');
 
 -- --------------------------------------------------------
 
@@ -10297,7 +10297,7 @@ CREATE TABLE `resume_menu` (
   `id` int(11) UNSIGNED NOT NULL,
   `menu` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `href` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `parent` int(11) UNSIGNED DEFAULT '0',
+  `parent` int(11) UNSIGNED DEFAULT 0,
   `sh` tinyint(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -10310,7 +10310,32 @@ INSERT INTO `resume_menu` (`id`, `menu`, `href`, `parent`, `sh`) VALUES
 (3, 'ts5er', 'y43y354y', 1, 1),
 (6, 't23', 't23t43teragfre', 4, 1),
 (12, 'home', 'atertre', 0, 1),
-(13, 'wet', 'fdhsfd', 12, 1);
+(13, 'wetrgregreg', 'fdhsfdgrgrgregreg', 12, 1),
+(16, 'gregre', 'gregr', 12, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `resume_message`
+--
+
+CREATE TABLE `resume_message` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `msg` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `sh` tinyint(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `resume_message`
+--
+
+INSERT INTO `resume_message` (`id`, `name`, `tel`, `email`, `msg`, `date`, `sh`) VALUES
+(21, '444', '0988763353', 'a0changj2@gmail.com', '6tj6y', '2021-01-16 16:41:56', 1),
+(23, '提姆', '0988763353', 'a0changj2@gmail.com', '111111111', '2021-01-16 19:30:14', 0);
 
 -- --------------------------------------------------------
 
@@ -10421,6 +10446,12 @@ ALTER TABLE `resume_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `resume_message`
+--
+ALTER TABLE `resume_message`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `resume_mywork`
 --
 ALTER TABLE `resume_mywork`
@@ -10476,13 +10507,13 @@ ALTER TABLE `resume_admin`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_exp`
 --
 ALTER TABLE `resume_exp`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_info`
 --
 ALTER TABLE `resume_info`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_jobskill`
@@ -10494,7 +10525,13 @@ ALTER TABLE `resume_jobskill`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_menu`
 --
 ALTER TABLE `resume_menu`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `resume_message`
+--
+ALTER TABLE `resume_message`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_mywork`

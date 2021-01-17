@@ -67,7 +67,7 @@ $rows=$pdo->query($sql)->fetchAll();
         </label>
       </div>
       <?php  }
-    if(!empty($row)){ ?>
+      if(!empty($row)){ ?>
     <div>
       <button type="submit" class="btn saveBtn">Save</button>
     </div>

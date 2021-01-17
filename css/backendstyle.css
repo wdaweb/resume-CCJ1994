@@ -111,26 +111,31 @@ color: #273c75;
   margin:auto;
   overflow:auto;
 }
+#chgModal{
+  display:none;
+  top: 0px;
+  position: fixed;
+  z-index: 99999;
+}
 .chgModal{
-  width: 100vw;
-  height: 100vh;
+  width:100vw;
+  height:100vh;
+  position: relative;
+  z-index:5;
+  background:rgba(51,51,51,0.4);
   top:0px;
   left:0px;
-  position: fixed;
-
+  overflow:auto;
 }
 .chgContent{
-  width:600px;
-  height:500px;
+  position:absolute;
   z-index:5;
   background:#fff;
-  border-radius: 10px;
+  border-radius: 5px;
   top:0px;
   left:0px;
   right:0px;
   bottom:0px;
   margin:auto;
   overflow:auto;
-  position: fixed;
-  box-shadow: 2px 2px 5px gray;
 }

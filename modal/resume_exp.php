@@ -1,25 +1,33 @@
 <form action="./api/add.php" method="post">
-  <h4 class="text-center"><?=$addstr[$do];?></h4>
-  <div class="text-center">
-    <input type="hidden" name="table" value="<?=$do;?>">
-  <ul>
-    <li>
-      <input type="text" name="year">
-      年
-    </li>
-    <li>
-      <input type="text" name="month">
-      月
-    </li>
-    <li>
-      <input type="text" name="company">
-      公司
-    </li>
-    <li>
-      <input type="text" name="job">
-      職位
-    </li>
-  </ul>
+  <div class="text-end my-2 border-bottom addtitle">
+    <h4 ><?=$addstr[$do];?></h4>
   </div>
-    <input type="submit" value="新增">
-</form>
+  <div class="row g-3 text-muted">
+    <div class="col-6">
+      <label for="addYear" class="form-label">Year</label>
+      <input class="form-control" id="addYear" type="text" name="year">
+    </div>
+    <div class="col-6">
+      <label for="addMonth" class="form-label">Month</label>
+      <input class="form-control" id="addMonth" type="text" name="month">
+    </div>
+    <div class="col-12">
+      <label for="addCompany" class="form-label">Company</label>
+      <input class="form-control" id="addCompany" type="text" name="company">
+    </div>
+  
+    <div class="col-12">
+      <label for="addJob" class="form-label">Position</label>
+      <textarea type="text" class="form-control" id="addJob" name="job"></textarea>
+      <input type="hidden" name="table" value="<?=$do;?>">
+    </div>
+  </div>
+  <div class="d-flex my-2 align-items-center">
+    <div class="me-2">
+      <input type="submit" class="btn saveBtn" value="Add it!">
+    </div>
+  </form>
+  <div>
+    <input class="backbtn btn btn-outline-secondary" type="button" value="Cancel">
+  </div>
+</div>

@@ -1,15 +1,24 @@
 <form action="./api/add.php" method="post">
-  <h4 class="text-center"><?=$addstr[$do];?></h4>
-  <div class="text-center">
-    <input type="hidden" name="table" value="<?=$do;?>">
-  <ul>
-    <li>技能/工具：
-      <input type="text" name="skill">
-    </li>
-    <li>擅長程度：
-    <input type="number" name="level">％
-    </li>
-  </ul>
+  <div class="text-end my-2 border-bottom addtitle">
+    <h4 ><?=$addstr[$do];?></h4>
   </div>
-    <input type="submit" value="新增">
-</form>
+  <div class="row g-3 text-muted justify-content-center">
+    <div class="col-8">
+      <label for="addSkill" class="form-label">Skill / Tool</label>
+      <input class="form-control" id="addSkill" type="text" name="skill">
+    </div>
+    <div class="col-8">
+      <label for="addLevel" class="form-label">Proficient / Level</label>
+      <input class="form-control" id="addLevel" type="text" name="Level">
+      <input type="hidden" name="table" value="<?=$do;?>">
+    </div>
+  </div>
+  <div class=" col-8 d-flex my-4 align-items-center justify-content-center">
+    <div class="me-2">
+      <input type="submit" class="btn saveBtn" value="Add it!">
+    </div>
+  </form>
+  <div>
+    <input class="backbtn btn btn-outline-secondary" type="button" value="Cancel">
+  </div>
+</div>

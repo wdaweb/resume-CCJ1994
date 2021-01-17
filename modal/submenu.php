@@ -5,49 +5,49 @@ $sql="select * from {$_GET['table']} where `parent`='{$_GET['id']}'";
 $subs=$pdo->query($sql)->fetchAll();
 // print_r($subs);
 ?>
-
-<h3>編輯次選單</h3>
-<hr>
 <form action="./api/editsub.php" method="post">
-<table>
-    <tr>
-    <td>次選單文字:</td>
-    <td>次選單連結:</td>
-    <td>刪除</td>
-    </tr>
-    <?php
-    foreach($subs as $sub){
-        ?>
-
-        <tr>
-            <td><input type="text" name="menu[]" value="<?=$sub['menu'];?>"></td>
-            <td><input type="text" name="href[]" value="<?=$sub['href'];?>"></td>
-            <td><input type="checkbox" name="del[]" value="<?=$sub['id'];?>"></td>
-            <input type="hidden" name="id[]" value="<?=$sub['id'];?>">
-        </tr>
-        <?php
-    }
-    ?>
-    <tr id="btn">
-        <td colspan="2">
-            <input type="hidden" name="table" value="<?=$_GET['table'];?>">
-            <input type="hidden" name="parent" value="<?=$_GET['id'];?>">
-            <input type="submit" value="修改確定">
-            <input type="reset" value="重置">
-            <input type="button" value="更多次選單" onclick="more()">
-        </td>
-    </tr>
-</table>
+    <div class="text-end my-2 border-bottom addtitle">
+        <h4 >編輯次選單</h4>
+    </div>
+    <div class="row g-3 my-3 text-muted align-items-center">
+    <?php foreach($subs as $sub){ ?>
+        <div class="col-5 form-floating overflow-hidden">
+            <input name="menu[]" type="text" class="form-control" id="subMenu" value="<?=$sub['menu'];?>">
+            <label for="subMenu">Menu</label>
+        </div>
+        <div class="col-5 form-floating overflow-hidden">
+            <input name="href[]" type="text" class="form-control" id="subHref" value="<?=$sub['href'];?>">
+            <label for="subHref">Link</label>
+        </div>
+        <div class="col-2 flex-shrink-0">
+            <div class="form-check">
+                <label class="form-check-label" for="subDel">刪除</label>
+                <input class="form-check-input" type="checkbox" id="subDel" name="del[]" value="<?=$sub['id'];?>">
+                <input type="hidden" name="id[]" value="<?=$sub['id'];?>">
+            </div>
+        </div>
+        <?php } ?>
+        <div class="d-flex justify-content-end" id="btnGroup">
+                <input type="hidden" name="table" value="<?=$_GET['table'];?>">
+                <input type="hidden" name="parent" value="<?=$_GET['id'];?>">
+                <input class="btn btn-outline-secondary me-3" type="button" value="更多次選單" onclick="more()">   
+                <input class="btn saveBtn" type="submit" value="修改確定">
+        </div>
+    </div>
 </form>
 
 <script>
 function more(){
 let str=`
-        <tr>
-            <td><input type="text" name="menu2[]" value=""></td>
-            <td><input type="text" name="href2[]" value=""></td>
-        </tr>
+        <div class="col-5 form-floating overflow-hidden">
+            <input name="menu2[]" type="text" class="form-control" id="subMenu" value="">
+            <label for="subMenu">Menu</label>
+        </div>
+        <div class="col-5 form-floating overflow-hidden">
+            <input name="href2[]" type="text" class="form-control" id="subHref" value="">
+            <label for="subHref">Link</label>
+        </div>
 `;
-$("#btn").before(str);
+$("#btnGroup").before(str);
 }
 </script>

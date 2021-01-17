@@ -4,20 +4,20 @@
   </div>
   <div class="row g-3 text-muted">
     <div class="col-md-7">
-      <label for="infoEmail" class="form-label">Email</label>
-      <input class="form-control" id="infoEmail" type="email" name="email">
+      <label for="addEmail" class="form-label">Email</label>
+      <input class="form-control" id="addEmail" type="email" name="email">
     </div>
     <div class="col-md-5">
-      <label for="infoTel" class="form-label">Phone Number</label>
-      <input class="form-control" id="infoTel" type="text" name="tel">
+      <label for="addTel" class="form-label">Phone Number</label>
+      <input class="form-control" id="addTel" type="text" name="tel">
     </div>
     <div class="col-6">
-      <label for="infoPosition" class="form-label">Position</label>
-      <input class="form-control" id="infoPosition" type="text" name="position">
+      <label for="addPosition" class="form-label">Position</label>
+      <input class="form-control" id="addPosition" type="text" name="position">
     </div>
     <div class="col-6">
-      <label for="infoAddress" class="form-label">Address</label>
-      <select select name="addr" id="infoAddress" class="form-select">
+      <label for="addAddress" class="form-label">Address</label>
+      <select select name="addr" id="addAddress" class="form-select">
         <option selected>請選擇</option>
         <option value="基隆市">基隆市</option>
         <option value="新北市">新北市</option>
@@ -44,8 +44,8 @@
       </select>
     </div>
     <div class="col-md-12">
-      <label for="infoIntro" class="form-label">Autobiography</label>
-      <textarea type="text" class="form-control" id="infoIntro" name="intro"></textarea>
+      <label for="addIntro" class="form-label">Autobiography</label>
+      <textarea type="text" class="form-control" id="addIntro" name="intro"></textarea>
       <input type="hidden" name="table" value="<?=$do;?>">
     </div>
   </div>
@@ -55,6 +55,6 @@
     </div>
   </form>
   <div>
-    <button class="backbtn btn btn-outline-secondary">Cancel</button>
+    <input class="backbtn btn btn-outline-secondary" type="button" value="Cancel">
   </div>
 </div>
