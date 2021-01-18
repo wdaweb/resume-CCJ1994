@@ -817,20 +817,20 @@ include_once "base.php";
       <div class="d-flex flex-column  flex-wrap">
         <form class="container d-flex flex-wrap my-2 border-bottom pb-5" action="api/add_msg.php" method="post">
           <div class="col-lg-5 col-md-5 col-12 form-floating mb-4 bgShadow">
-            <input type="text" class="form-control border-0" id="name" name="name" placeholder="your name">
+            <input type="text" class="form-control border-0" id="name" name="name" placeholder="your name" required>
             <label for="name">NAME</label>
           </div>
           <div class="col-lg-6 col-md-6 col-12 offset-lg-1 offset-md-1 form-floating mb-4 bgShadow">
-            <input type="tel" class="form-control border-0" id="tel" name="tel" placeholder="your number">
+            <input type="tel" class="form-control border-0" id="tel" name="tel" placeholder="your number" minlength="8" maxlength="12" required>
             <label for="tel">PHONE NUMBER</label>
           </div>
           <div class="col-12 form-floating mb-4 bgShadow">
-            <input type="email" class="form-control border-0" id="email" name="email" placeholder="email address">
+            <input type="email" class="form-control border-0" id="email" name="email" placeholder="email address" required>
             <label for="email">EMAIL</label>
           </div>
           <div class="col-12 form-floating mb-4 bgShadow">
             <textarea style="height:90px;" type="text" class="form-control border-0" id="msg"
-              name="msg" placeholder="message"></textarea>
+              name="msg" placeholder="message" required></textarea>
             <label for="msg">MESSAGE</label>
           </div>
           <input type="hidden" name="table" value="resume_message">

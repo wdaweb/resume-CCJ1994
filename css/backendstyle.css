@@ -30,6 +30,9 @@ body{
   background-color: transparent;
 }
 
+#sidebarMenu,main{
+  transform: translateY(70px);
+}
 /* sidebar */
 
 @media (max-width: 767.98px) {
@@ -37,7 +40,7 @@ body{
     background: #fff;
     position: fixed;
     z-index: 999;
-    top: 0;
+    top: -30px;
     padding: 0 !important;
   }
 }

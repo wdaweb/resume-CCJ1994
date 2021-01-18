@@ -11,7 +11,7 @@
     // scroll to id
     $("#mainMenu a").click(function () {
       let who = $(this).not("#cover").attr("href");
-      let val = $(who).offset().top - $("#meMenu").innerHeight();
+      let val = $(who).offset().top - $("#meMenu").innerHeight()+1;
       $("html").animate(
         { scrollTop: val }, 1000, "swing"
       );
