@@ -1,7 +1,8 @@
 <?php
 include_once "base.php";
 if(empty($_SESSION['login'])){
-  echo "你沒有使用權限";
+  echo "你沒有使用權限，";
+  echo "<a href='index.php'>請登入</a>";
   exit();
 }else{
 ?>
