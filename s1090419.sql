@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2021 年 01 月 17 日 16:07
--- 伺服器版本： 10.4.14-MariaDB
--- PHP 版本： 7.4.10
+-- 產生時間： 2021 年 01 月 19 日 15:56
+-- 伺服器版本： 5.5.64-MariaDB
+-- PHP 版本： 7.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -102,9 +103,9 @@ CREATE TABLE `invoices` (
   `period` tinyint(1) UNSIGNED NOT NULL,
   `payment` int(11) UNSIGNED NOT NULL,
   `date` date NOT NULL,
-  `create_time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `item` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `item` text COLLATE utf8mb4_unicode_ci,
+  `note` text COLLATE utf8mb4_unicode_ci,
   `user_acc` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -10147,7 +10148,7 @@ CREATE TABLE `login` (
   `acc` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pw` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `create_time` timestamp NOT NULL DEFAULT current_timestamp()
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -10207,15 +10208,19 @@ CREATE TABLE `resume_admin` (
   `id` int(10) UNSIGNED NOT NULL,
   `acc` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pw` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
+  `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ques` tinyint(1) UNSIGNED NOT NULL,
+  `ans` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `resume_admin`
 --
 
-INSERT INTO `resume_admin` (`id`, `acc`, `pw`, `email`) VALUES
-(1, 'admin', '1111', 'a0changj2@gmail.com');
+INSERT INTO `resume_admin` (`id`, `acc`, `pw`, `email`, `ques`, `ans`) VALUES
+(1, 'admin', '1111', 'a0changj2@gmail.com', 1, 'wugu'),
+(3, 'admin', '1111', 'a0changj2@gmail.com', 2, '158'),
+(4, 'admin', '1111', 'a0changj2@gmail.com', 3, '49');
 
 -- --------------------------------------------------------
 
@@ -10237,9 +10242,13 @@ CREATE TABLE `resume_exp` (
 --
 
 INSERT INTO `resume_exp` (`id`, `year`, `month`, `company`, `job`, `sh`) VALUES
-(1, '2013-2016', 'September', '銘傳大學', '餐旅管理學系\r\n觀光學院系學會\r\n網路宣傳及攝影組長', 0),
-(4, '444', '4444', '3333', '3333', 0),
-(5, '2016', 'September-Feb', '銘傳大學', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum non architecto, doloribus qui nobis voluptates ex error officia magni laboriosam quaerat numquam aperiam iusto facere sint consequuntur excepturi nihil distinctio!\r\n', 1);
+(1, '2013-2016', 'September', '銘傳大學', '餐旅管理學系\r\n觀光學院系學會\r\n網路宣傳及攝影組長', 1),
+(2, '2015', 'Jun-Oct', ' 美國打工旅遊', 'Grand Teton National Park\r\nResort Worker', 1),
+(3, '2016-2017', 'February', '台北萬豪酒店', '房務部門\r\n房務員', 1),
+(4, '2017', 'Sep-Dec', '本本國際', '設計助理', 1),
+(5, '2018', 'Jan-Apr', '泰宇出版社', '教材美編人員', 1),
+(6, '2018-2020', 'April', ' 澳洲打工度假', 'Housekeeper\r\nFarm Picker', 1),
+(7, '2020', 'May-Sep', '臺灣銀行', '授信部門\r\n行政人員', 1);
 
 -- --------------------------------------------------------
 
@@ -10261,7 +10270,7 @@ CREATE TABLE `resume_info` (
 --
 
 INSERT INTO `resume_info` (`id`, `tel`, `addr`, `email`, `position`, `intro`) VALUES
-(8, '0988763353', '新北市', 'a0changj2@gmail.com', 'web design', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum perferendis inventore incidunt dolor harum odio, eos repellat nisi commodi amet alias vitae hic unde. Quos, quas praesentium. Consequuntur, delectus cumque?\r\n');
+(4, '0988763353', '新北市', 'a0changj2@gmail.com', 'web design | graphic design', '你好！我是張君如，來自新北市，2016年畢業於銘傳大學-餐旅管理學系，在求學與社團活動過程中，發現自己的興趣，因此開始踏上一條與本科系完全不同的道路，喜歡探索各種新事物，熱愛到處旅遊與拍照，在2018年給了自己一個挑戰，前往澳洲體驗與台灣截然不同的生活，兩年後的現在回到台灣，正在進行全新的目標。');
 
 -- --------------------------------------------------------
 
@@ -10281,11 +10290,14 @@ CREATE TABLE `resume_jobskill` (
 --
 
 INSERT INTO `resume_jobskill` (`id`, `skill`, `level`, `sh`) VALUES
-(2, '視覺設計', 80, 1),
-(3, '前端設計', 70, 1),
-(4, '後端設計', 50, 1),
+(2, 'Visual Design', 80, 1),
+(3, 'Web Front-end Design', 70, 1),
+(4, 'Web Back-end Design', 50, 1),
 (5, 'PS', 80, 1),
-(6, 'AI', 80, 1);
+(6, 'AI', 80, 1),
+(7, 'PHP', 80, 1),
+(8, 'JS', 60, 1),
+(9, 'BS', 80, 1);
 
 -- --------------------------------------------------------
 
@@ -10297,7 +10309,7 @@ CREATE TABLE `resume_menu` (
   `id` int(11) UNSIGNED NOT NULL,
   `menu` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `href` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `parent` int(11) UNSIGNED DEFAULT 0,
+  `parent` int(11) UNSIGNED DEFAULT '0',
   `sh` tinyint(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -10309,9 +10321,13 @@ INSERT INTO `resume_menu` (`id`, `menu`, `href`, `parent`, `sh`) VALUES
 (2, 'trutru', 'trutru', 1, 1),
 (3, 'ts5er', 'y43y354y', 1, 1),
 (6, 't23', 't23t43teragfre', 4, 1),
-(12, 'home', 'atertre', 0, 1),
-(13, 'wetrgregreg', 'fdhsfdgrgrgregreg', 12, 1),
-(16, 'gregre', 'gregr', 12, 1);
+(12, 'Home', 'index.php#meHome', 0, 1),
+(14, 'AboutMe', 'index.php#meAbout', 0, 1),
+(15, 'Portfolio', 'index.php#mePortfolio', 0, 1),
+(16, 'MyWork', 'index.php#meWork', 0, 1),
+(17, 'Contact', 'index.php#meContact', 0, 1),
+(18, 'Experience', 'index.php#mePortfolio', 15, 1),
+(19, 'My Skill', 'index.php#mePortfolio', 15, 1);
 
 -- --------------------------------------------------------
 
@@ -10325,7 +10341,7 @@ CREATE TABLE `resume_message` (
   `tel` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `msg` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `sh` tinyint(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -10334,8 +10350,15 @@ CREATE TABLE `resume_message` (
 --
 
 INSERT INTO `resume_message` (`id`, `name`, `tel`, `email`, `msg`, `date`, `sh`) VALUES
-(21, '444', '0988763353', 'a0changj2@gmail.com', '6tj6y', '2021-01-16 16:41:56', 1),
-(23, '提姆', '0988763353', 'a0changj2@gmail.com', '111111111', '2021-01-16 19:30:14', 0);
+(21, '444', '0988763353', 'a0changj2@gmail.com', '6tj6y', '2021-01-16 08:41:56', 1),
+(23, '提姆', '0988763353', 'a0changj2@gmail.com', '111111111', '2021-01-16 11:30:14', 1),
+(21, '444', '0988763353', 'a0changj2@gmail.com', '6tj6y', '2021-01-16 08:41:56', 1),
+(23, '提姆', '0988763353', 'a0changj2@gmail.com', '111111111', '2021-01-16 11:30:14', 1),
+(24, 'Me', '0988763353', 'a0changj2@gmail.com', 'Hi', '2021-01-17 07:34:27', 1),
+(25, '板橋區花', '02043064', 'beauty945@gmail.com', 'ㄐㄧˇㄙㄨㄟˋㄓㄨˋㄋ', '2021-01-17 07:37:37', 1),
+(26, '陳明靖', '0938170089', '', 'Hi', '2021-01-17 08:17:15', 1),
+(27, '想養貓', '0972003891', 'dnaemilys014@gmail.com', '好厲害！', '2021-01-17 15:39:45', 0),
+(0, 'Nina', '091111111111', 'creat82@yahoo.com.tw', 'Do your best', '2021-01-18 03:19:44', 0);
 
 -- --------------------------------------------------------
 
@@ -10356,9 +10379,23 @@ CREATE TABLE `resume_mywork` (
 --
 
 INSERT INTO `resume_mywork` (`id`, `type`, `img`, `text`, `sh`) VALUES
-(8, 1, '螢幕快照 2020-11-22 上午1.18.55.png', '4egr', 0),
-(9, 0, 'simona-sergi-UFaNtHWNz3g-unsplash.jpg', '', 0),
-(10, 0, 'simona-sergi-UFaNtHWNz3g-unsplash.jpg', '', 0);
+(12, 2, 'calendar.png', 'Web Design\r\n-Calendar', 1),
+(13, 2, 'invoice.png', 'Web Design\r\n-Invoice', 1),
+(14, 3, 'p.png', 'Graphic Design\r\n-Brand', 1),
+(15, 3, 'edm.png', 'Graphic Design\r\n-EDM', 1),
+(16, 3, 'poster.png', 'Graphic Design\r\n-Poster', 1),
+(17, 2, 'sport.png', 'Graphic Design\r\n-Poster', 1),
+(18, 2, 'banner.png', 'Graphic Design\r\n-Banner', 1),
+(19, 2, 'm1.png', 'Graphic Design\r\n-Manual', 1),
+(20, 2, 'game.png', 'Graphic Design\r\n-Game', 1),
+(21, 3, 'puffing.png', 'Photography\r\n-Postcard', 1),
+(22, 2, 'sport2.jpg', 'Graphic Design-Postercard', 0),
+(24, 2, 'sport1.jpg', 'Graphic Design-Postercard', 1),
+(25, 1, 'sport3.jpg', 'Graphic Design-Postercard', 1),
+(26, 2, 'm2.jpg', 'Graphic Design-Manual', 1),
+(27, 2, 'game.jpg', 'Graphic Design-Game', 1),
+(28, 3, 'london.jpg', 'Photography-Postcard', 1),
+(29, 3, 'KATUNGA.jpg', 'Photography-Postcard', 1);
 
 -- --------------------------------------------------------
 
@@ -10378,8 +10415,10 @@ CREATE TABLE `resume_pic` (
 --
 
 INSERT INTO `resume_pic` (`id`, `img`, `text`, `sh`) VALUES
-(1, 'IMG_4364.png', 'reggreh', 1),
-(4, 'simona-sergi-UFaNtHWNz3g-unsplash.jpg', 'reyery797', 1);
+(5, 'favicon.ico', 'favicon.ico', 1),
+(6, 'me-1.png', 'home pic', 1),
+(7, 'me-3.png', 'aboutme pic', 1),
+(8, 'logo.svg', 'footer logo', 1);
 
 --
 -- 已傾印資料表的索引
@@ -10446,12 +10485,6 @@ ALTER TABLE `resume_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- 資料表索引 `resume_message`
---
-ALTER TABLE `resume_message`
-  ADD PRIMARY KEY (`id`);
-
---
 -- 資料表索引 `resume_mywork`
 --
 ALTER TABLE `resume_mywork`
@@ -10501,49 +10534,43 @@ ALTER TABLE `member`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_admin`
 --
 ALTER TABLE `resume_admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_exp`
 --
 ALTER TABLE `resume_exp`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_info`
 --
 ALTER TABLE `resume_info`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_jobskill`
 --
 ALTER TABLE `resume_jobskill`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_menu`
 --
 ALTER TABLE `resume_menu`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `resume_message`
---
-ALTER TABLE `resume_message`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_mywork`
 --
 ALTER TABLE `resume_mywork`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_pic`
 --
 ALTER TABLE `resume_pic`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
