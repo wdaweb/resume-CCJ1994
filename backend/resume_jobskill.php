@@ -1,5 +1,10 @@
 <?php
-$sql="select * from {$do}"; 
+$all=$pdo->query("select count(*) from {$do}")->fetchColumn();
+$div=5;
+$pages=ceil($all/$div);
+$now=(isset($_GET['p']))?$_GET['p']:1;
+$start=($now-1)*$div;
+$sql="select * from {$do} limit $start,$div"; 
 $rows=$pdo->query($sql)->fetchAll();
 ?>
 <form action="./api/edit.php" method="post">
@@ -35,8 +40,35 @@ $rows=$pdo->query($sql)->fetchAll();
         </div>
       </div>
     </div>
-  <?php }
-  if(!empty($row)){ ?>
+  <?php } ?>
+  <div class="d-flex justify-content-center align-items-center">
+    <?php if(($now-1)>0){ ?>
+    <div class="me-2">
+      <a href="?do=resume_jobskill&p=<?=$now-1;?>"><i class="fas fa-caret-left fa-2x" style="color:#273c75;"></i></a>
+    </div>
+    <?php } ?>
+    <div class="btn-toolbar " role="toolbar">
+      <div class="btn-group me-2" role="group">
+        <?php for($i=1;$i<=$pages;$i++){
+            if($i==$now){ ?>
+        <a class="btn btn-secondary" href="?do=resume_jobskill&p=<?=$i;?>">
+          <?=$i;?>
+        </a>
+        <?php  }else{ ?>
+        <a class="btn btn-outline-secondary" href="?do=resume_jobskill&p=<?=$i;?>">
+          <?=$i;?>
+        </a>
+        <?php  }
+        }?>
+      </div>
+    </div>
+    <?php  if($now+1<=$pages){ ?>
+    <div class="ms-2">
+      <a href="?do=resume_jobskill&p=<?=$now+1;?>"><i class="fas fa-caret-right fa-2x" style="color:#273c75;"></i></a>
+    </div>
+    <?php } ?>
+  </div>
+  <?php if(!empty($row)){ ?>
     <div class="text-end">
       <button type="submit" class="btn saveBtn">Save</button>
     </div>
