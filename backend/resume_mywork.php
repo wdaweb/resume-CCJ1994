@@ -28,12 +28,12 @@ $rows=$pdo->query($sql)->fetchAll();
         </div>
           <div class="d-flex justify-content-end">
             <div class="form-check mx-2">
-              <input class="form-check-input" type="checkbox" id="workDel" name="del[]" value="<?=$row['id'];?>">
-              <label class="form-check-label" for="workDel">刪除</label>
+              <input class="form-check-input" type="checkbox" id="workSh<?=$row['id'];?>" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
+              <label class="form-check-label" for="workSh<?=$row['id'];?>">顯示</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="btnSh<?=$row['id'];?>" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
-              <label class="form-check-label" for="btnSh<?=$row['id'];?>">顯示</label>
+              <input class="form-check-input" type="checkbox" id="workDel<?=$row['id'];?>" name="del[]" value="<?=$row['id'];?>">
+              <label class="form-check-label" for="workDel<?=$row['id'];?>">刪除</label>
             </div>
             <input type="hidden" name="id[]" value="<?=$row['id'];?>">
             <input type="hidden" name="table" value="<?=$do;?>">
@@ -59,8 +59,3 @@ $rows=$pdo->query($sql)->fetchAll();
   }
   ?>
   </form>
-<div id="chgModal" style="display:none;">
-  <div class="chgModal"></div>
-  <div class="chgContent">
-  </div>
-</div>

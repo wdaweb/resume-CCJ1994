@@ -1,15 +1,20 @@
 <form action="./api/add.php" method="post" enctype="multipart/form-data">
-  <h4 class="text-center"><?=$addstr[$do];?></h4>
-  <div class="text-center">
-    <input type="hidden" name="table" value="<?=$do;?>">
-  <ul>
-    <li>圖片：
-      <input type="file" name="img">
-    </li>
-    <li>描述：
-      <textarea name="text"></textarea>
-    </li>
-  </ul>
+<div class="text-end my-2 border-bottom addtitle">
+    <h4 ><?=$addstr[$do];?></h4>
   </div>
-    <input type="submit" value="新增">
+  <div class="row g-3 text-muted justify-content-center my-4">
+    <div class="col-8">
+      <div class="input-group">
+        <input type="file"  class="form-control" name="img">
+      </div>
+    </div>
+    <div class="col-8">
+      <label for="addText" class="form-label">Description</label>
+      <textarea class="form-control" id="addText" name="text"></textarea>
+      <input type="hidden" name="table" value="<?=$do;?>">
+    </div>
+    <div class="col-8">
+      <input type="submit" class="btn saveBtn" value="Add it!">
+    </div>
+  </div>
 </form>

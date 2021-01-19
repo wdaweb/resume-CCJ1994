@@ -94,7 +94,7 @@ color: #273c75;
 
 /* modal */
 #addModal{
-  display:none;
+  /* display:none; */
   top: 0px;
   position: fixed;
   z-index: 99999;

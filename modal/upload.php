@@ -1,23 +1,29 @@
 <?php include_once "../base.php";?>
-<div class="text-end my-2 border-bottom addtitle">
-  <h4>更換圖片</h4>
-</div>
 <form action="./api/upload.php" method="post" enctype="multipart/form-data">
-  <div>
-    <input type="file" name="img" id="">
+  <div class="text-end my-2 border-bottom addtitle">
+    <h4>更換圖片</h4>
   </div>
-  <div>
-    <input type="submit" value="修改">
+  <div class="row g-3 text-muted justify-content-center my-4">
+    <div class="col-8">
+      <div class="input-group">
+        <input type="file" class="form-control" name="img">
+      </div>
+    </div>
+    <div class="col-8 d-flex justify-content-end">
+      <div class="mx-2">
+        <input type="submit" class="btn saveBtn" value="更換">
+      </div>
+      <div>
+        <input class="cancelbtn btn btn-outline-secondary" type="button" value="取消">
+      </div>
+    </div>
+    <input type="hidden" name="table" value="<?=$_GET['table'];?>">
+    <input type="hidden" name="id" value="<?=$_GET['id'];?>">
   </div>
-  <input type="hidden" name="table" value="<?=$_GET['table'];?>">
-  <input type="hidden" name="id" value="<?=$_GET['id'];?>">
 </form>
-<div>
-  <button class="cancelbtn" type="button">取消</button> 
-</div> 
 
 <script>
-$(".cancelbtn").click(function () {
-      $("#chgModal").fadeOut();
-    });
+$(".cancelbtn").click(function() {
+  $("#chgModal").fadeOut();
+});
 </script>
