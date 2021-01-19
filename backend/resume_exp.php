@@ -50,6 +50,11 @@ $rows=$pdo->query($sql)->fetchAll();
     </div>
   </div>
   <?php  }?>
+  <?php if(!empty($row)){ ?>
+  <div class="text-end">
+    <button type="submit" class="btn saveBtn">Save</button>
+  </div>
+  <?php } ?>
   <div class="d-flex justify-content-center align-items-center">
     <?php if(($now-1)>0){ ?>
     <div class="me-2">
@@ -77,9 +82,4 @@ $rows=$pdo->query($sql)->fetchAll();
     </div>
     <?php } ?>
   </div>
-  <?php if(!empty($row)){ ?>
-  <div class="text-end">
-    <button type="submit" class="btn saveBtn">Save</button>
-  </div>
-  <?php } ?>
 </form>
