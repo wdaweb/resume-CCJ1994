@@ -6,7 +6,6 @@ $pages_new=ceil($all_new/$div);
 $pages=ceil($all/$div);
 $now=(isset($_GET['p']))?$_GET['p']:1;
 $start=($now-1)*$div;
-
 ?>
 <form action="./api/edit.php" method="post">
   <div class="d-flex justify-content-between pt-3 pb-2 mb-3 border-bottom">

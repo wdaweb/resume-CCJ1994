@@ -1,5 +1,6 @@
 <?php
 include_once "base.php";
+$info=$pdo->query("select * from resume_info")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,7 @@ include_once "base.php";
             <label for="floatingPassword">Password</label>
           </div>
           <div class="text-end">
-            <a class="text-muted" href=""><small>Forgot Password?</small></a>
+            <a class="text-muted" href="api/findpw.php"><small>Forgot Password?</small></a>
           </div>
           <div class="text-center mt-3">
             <button type="submit" style="background: transparent;color: #34495e;border: 0px;">Sign in <i
