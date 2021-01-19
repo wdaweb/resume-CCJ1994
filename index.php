@@ -866,16 +866,13 @@ include_once "base.php";
   <footer class="text-center my-5">
     <small>
       <img src="./img/logo.svg" width="60px" alt=""><br>
-      copyright &copy; 2020 <span style="color: #95a5a6;">CCJ Design</span>. All Rights Reserved
+      copyright &copy; 2021 <span style="color: #95a5a6;">CCJ Design</span>. All Rights Reserved
     </small>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/jquery-3.5.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/myself.js"></script>
-  <script>
-    
-  </script>
 </body>
 
 </html>

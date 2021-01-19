@@ -1,5 +1,7 @@
 <?php include_once "../base.php";?>
-<h3>更換圖片</h3>
+<div class="text-end my-2 border-bottom addtitle">
+  <h4>更換圖片</h4>
+</div>
 <form action="./api/upload.php" method="post" enctype="multipart/form-data">
   <div>
     <input type="file" name="img" id="">
@@ -13,6 +15,7 @@
 <div>
   <button class="cancelbtn" type="button">取消</button> 
 </div> 
+
 <script>
 $(".cancelbtn").click(function () {
       $("#chgModal").fadeOut();

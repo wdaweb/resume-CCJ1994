@@ -9,6 +9,11 @@ $subs=$pdo->query($sql)->fetchAll();
     <div class="text-end my-2 border-bottom addtitle">
         <h4 >編輯次選單</h4>
     </div>
+    <?php if(empty($subs)){ ?>
+    <div class="text-center text-muted">
+      <h2>目前無任何次選單，請新增</h2>
+    </div>
+    <?php } ?>
     <div class="row g-3 my-3 text-muted align-items-center">
     <?php foreach($subs as $sub){ ?>
         <div class="col-5 form-floating overflow-hidden">

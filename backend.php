@@ -197,16 +197,13 @@ if(empty($_SESSION['login'])){
   <div id="chgModal">
     <div class="chgModal"></div>
     <div class="chgContent container col-md-6 col-10 my-5">
-      <?php
       
-      ?>
     </div>
   </div>
 
-  <footer class="text-center border-top py-2 mx-2">
+  <footer class=" text-center border-top py-3 m-2" style="transform:translateY(70px);">
     <small>
-      <img src="./img/logo.svg" width="60px" alt=""><br>
-      copyright &copy; 2020 <span style="color: #95a5a6;">CCJ Design</span>. All Rights Reserved
+      copyright &copy; 2021 <span style="color: #95a5a6;">CCJ Design</span>. All Rights Reserved
     </small>
   </footer>
 

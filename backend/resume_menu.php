@@ -23,8 +23,8 @@ $rows=$pdo->query($sql)->fetchAll();
       <label for="meunHref">Link</label>
     </div>
     <div class="col-2">
-      <button button class="chgbtn btn btn-secondary" type="button"
-          onclick="op('#chgModal','.chgContent','./modal/submenu.php?table=<?=$do;?>&id=<?=$row['id'];?>')">編輯次選單</button>
+      <button button class="subbtn btn btn-secondary" type="button"
+          onclick="op('#chgModal','.chgContent','./modal/submenu.php?table=<?=$do;?>&id=<?=$row['id'];?>')">次選單</button>
     </div>
     <div class="col-12 d-flex justify-content-end align-items-center">
       <div class="form-check mx-3">
