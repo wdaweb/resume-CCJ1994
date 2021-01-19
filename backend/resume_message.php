@@ -80,7 +80,7 @@ $rows=$pdo->query($sql)->fetchAll();
         <div class="accordion accordion-flush" id="msgcontent">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapse<?=$row['id'];?>">
                 <?=substr($row['date'],0,10);?> <?=substr( $row['msg'], 0 , 10 );?>...
               </button>

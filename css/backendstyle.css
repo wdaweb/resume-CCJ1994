@@ -94,7 +94,7 @@ color: #273c75;
 
 /* modal */
 #addModal{
-  /* display:none; */
+  display:none;
   top: 0px;
   position: fixed;
   z-index: 99999;
@@ -114,7 +114,8 @@ color: #273c75;
   z-index:5;
   background:#fff;
   border-radius: 5px;
-  top:0px;
+  height: 60vh;
+  top:15%;
   left:0px;
   right:0px;
   bottom:0px;
@@ -147,10 +148,17 @@ color: #273c75;
   z-index:5;
   background:#fff;
   border-radius: 5px;
-  top:0px;
+  height: 60vh;
+  top:15%;
   left:0px;
   right:0px;
   bottom:0px;
   margin:auto;
   overflow:auto;
+}
+.fa-plus-square{
+  color: #273c75;
+}
+#msgcontent .accordion-header,#unmsgcontent .accordion-header{
+  border: #fff solid 1px;
 }
