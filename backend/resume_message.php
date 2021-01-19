@@ -1,6 +1,11 @@
 <?php
-$sql="select * from {$do}"; 
-$rows=$pdo->query($sql)->fetchAll();
+
+$all=$pdo->query("select count(*) from {$do}")->fetchColumn();
+$div=5;
+$pages=ceil($all/$div);
+$now=(isset($_GET['p']))?$_GET['p']:1;
+$start=($now-1)*$div;
+
 ?>
 <form action="./api/edit.php" method="post">
     <div class="d-flex justify-content-between pt-3 pb-2 mb-3 border-bottom">
@@ -70,7 +75,7 @@ $rows=$pdo->query($sql)->fetchAll();
       </div>
       <div class="tab-pane fade p-3" id="readed" role="tabpanel">
         <?php
-      $sql="select * from {$do} where `sh`='1'"; 
+      $sql="select * from {$do} where `sh`='1' limit $start,$div"; 
       $rows=$pdo->query($sql)->fetchAll();
       if(empty($rows)){
         echo "no Message";
@@ -119,8 +124,34 @@ $rows=$pdo->query($sql)->fetchAll();
         </div>
         <?php }
           }  ?>
+          <?php
+if(($now-1)>0){
+    ?>
+        <a class="bl" style="font-size:30px;" href="?do=resume_message&p=<?=$now-1;?>">&lt;&nbsp;</a>
+<?php
+}
+        for($i=1;$i<=$pages;$i++){
+            if($i==$now){
+                echo "<a href='?do=resume_message&p=$i' style='font-size:36px;'>";
+                echo $i ;
+                echo "</a>";
+
+            }else{
+
+                echo "<a href='?do=resume_message&p=$i' style='font-size:30px;'>";
+                echo $i ;
+                echo "</a>";
+            }
+        }
+        if($now+1<=$pages){
+          ?>
+          <a class="bl" style="font-size:30px;" href="?do=resume_message&p=<?=$now+1;?>">&nbsp;&gt;</a>
+<?php
+}
+?>
       </div>
 
     </div>
+    
   
 </form>
