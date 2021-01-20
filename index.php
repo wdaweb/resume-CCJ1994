@@ -1,6 +1,7 @@
 <?php
 include_once "base.php";
 $info=$pdo->query("select * from resume_info")->fetchAll();
+$menu=$pdo->query("select * from resume_menu")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -846,15 +847,15 @@ $info=$pdo->query("select * from resume_info")->fetchAll();
         </div>
         <div class="m-3">
           <a href="tel:0988763353">
-            <i class="fas fa-mobile-alt"></i>&emsp; <b>0988-763-353</b>
+            <i class="fas fa-mobile-alt"></i>&emsp; <b><?=$info['0']['tel'];?></b>
           </a>
         </div>
         <div class="m-3">
-          <i class="fas fa-map-marker-alt"></i>&emsp; <b>New Taipei City</b>
+          <i class="fas fa-map-marker-alt"></i>&emsp; <b><?=$info['0']['addr'];?></b>
         </div>
         <div class="m-3">
           <a href="mailto:a0changj2@gmail.com.tw">
-            <i class="fas fa-envelope"></i>&emsp; <b>a0changj2@gmail.com</b>
+            <i class="fas fa-envelope"></i>&emsp; <b><?=$info['0']['email'];?></b>
           </a>
         </div>
       </div>
