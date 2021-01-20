@@ -5,20 +5,20 @@
   <div class="row g-3 text-muted">
     <div class="col-6">
       <label for="addYear" class="form-label">Year</label>
-      <input class="form-control" id="addYear" type="text" name="year">
+      <input class="form-control" id="addYear" type="text" name="year" required>
     </div>
     <div class="col-6">
       <label for="addMonth" class="form-label">Month</label>
-      <input class="form-control" id="addMonth" type="text" name="month">
+      <input class="form-control" id="addMonth" type="text" name="month" required>
     </div>
     <div class="col-12">
       <label for="addCompany" class="form-label">Company</label>
-      <input class="form-control" id="addCompany" type="text" name="company">
+      <input class="form-control" id="addCompany" type="text" name="company" required>
     </div>
   
     <div class="col-12">
       <label for="addJob" class="form-label">Position</label>
-      <textarea type="text" class="form-control" id="addJob" name="job"></textarea>
+      <textarea type="text" class="form-control" id="addJob" name="job" required></textarea>
       <input type="hidden" name="table" value="<?=$do;?>">
     </div>
   </div>

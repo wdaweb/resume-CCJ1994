@@ -5,11 +5,11 @@
   <div class="row g-3 text-muted justify-content-center">
     <div class="col-8">
       <label for="addMenu" class="form-label">Meun Title</label>
-      <input class="form-control" id="addMenu" type="text" name="menu">
+      <input class="form-control" id="addMenu" type="text" name="menu" required>
     </div>
     <div class="col-8">
       <label for="addHref" class="form-label">Link</label>
-      <input class="form-control" id="addHref" type="text" name="href">
+      <input class="form-control" id="addHref" type="text" name="href" required>
       <input type="hidden" name="table" value="<?=$do;?>">
     </div>
   </div>

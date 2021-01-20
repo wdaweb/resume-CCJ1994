@@ -17,17 +17,17 @@ $subs=$pdo->query($sql)->fetchAll();
     <div class="row g-3 my-3 text-muted align-items-center">
     <?php foreach($subs as $sub){ ?>
         <div class="col-5 form-floating overflow-hidden">
-            <input name="menu[]" type="text" class="form-control" id="subMenu" value="<?=$sub['menu'];?>">
+            <input name="menu[]" type="text" class="form-control" id="subMenu" value="<?=$sub['menu'];?>" required>
             <label for="subMenu">Menu</label>
         </div>
         <div class="col-5 form-floating overflow-hidden">
-            <input name="href[]" type="text" class="form-control" id="subHref" value="<?=$sub['href'];?>">
+            <input name="href[]" type="text" class="form-control" id="subHref" value="<?=$sub['href'];?>" required>
             <label for="subHref">Link</label>
         </div>
         <div class="col-2 flex-shrink-0">
             <div class="form-check">
                 <label class="form-check-label" for="subDel">刪除</label>
-                <input class="form-check-input" type="checkbox" id="subDel" name="del[]" value="<?=$sub['id'];?>">
+                <input class="form-check-input" type="checkbox" id="subDel" name="del[]" value="<?=$sub['id'];?>" required>
                 <input type="hidden" name="id[]" value="<?=$sub['id'];?>">
             </div>
         </div>

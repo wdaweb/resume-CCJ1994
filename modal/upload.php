@@ -6,7 +6,7 @@
   <div class="row g-3 text-muted justify-content-center my-4">
     <div class="col-8">
       <div class="input-group">
-        <input type="file" class="form-control" name="img">
+        <input type="file" class="form-control" name="img" required>
       </div>
     </div>
     <div class="col-8 d-flex justify-content-end">

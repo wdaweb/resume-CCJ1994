@@ -5,19 +5,19 @@
   <div class="row g-3 text-muted">
     <div class="col-md-7">
       <label for="addEmail" class="form-label">Email</label>
-      <input class="form-control" id="addEmail" type="email" name="email">
+      <input class="form-control" id="addEmail" type="email" name="email" required>
     </div>
     <div class="col-md-5">
       <label for="addTel" class="form-label">Phone Number</label>
-      <input class="form-control" id="addTel" type="text" name="tel">
+      <input class="form-control" id="addTel" type="text" name="tel" required>
     </div>
     <div class="col-6">
       <label for="addPosition" class="form-label">Position</label>
-      <input class="form-control" id="addPosition" type="text" name="position">
+      <input class="form-control" id="addPosition" type="text" name="position" required>
     </div>
     <div class="col-6">
       <label for="addAddress" class="form-label">Address</label>
-      <select select name="addr" id="addAddress" class="form-select">
+      <select select name="addr" id="addAddress" class="form-select" required>
         <option selected>請選擇</option>
         <option value="基隆市">基隆市</option>
         <option value="新北市">新北市</option>
@@ -45,7 +45,7 @@
     </div>
     <div class="col-md-12">
       <label for="addIntro" class="form-label">Autobiography</label>
-      <textarea type="text" class="form-control" id="addIntro" name="intro"></textarea>
+      <textarea type="text" class="form-control" id="addIntro" name="intro" required></textarea>
       <input type="hidden" name="table" value="<?=$do;?>">
     </div>
   </div>

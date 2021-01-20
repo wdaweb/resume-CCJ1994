@@ -5,11 +5,11 @@
   <div class="row g-3 text-muted justify-content-center">
     <div class="col-8">
       <label for="addSkill" class="form-label">Skill / Tool</label>
-      <input class="form-control" id="addSkill" type="text" name="skill">
+      <input class="form-control" id="addSkill" type="text" name="skill" required>
     </div>
     <div class="col-8">
       <label for="addLevel" class="form-label">Proficient / Level</label>
-      <input class="form-control" id="addLevel" type="text" name="Level">
+      <input class="form-control" id="addLevel" type="text" name="Level" required>
       <input type="hidden" name="table" value="<?=$do;?>">
     </div>
   </div>
