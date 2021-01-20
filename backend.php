@@ -36,7 +36,7 @@ if(empty($_SESSION['login'])){
       </a>
     </div>
   </header>
-  <div class="container-fluid ">
+  <section class="container-fluid ">
     <div class="row">
       <nav id="sidebarMenu" class="col-md-4 col-lg-3 d-md-block sidebar collapse my-4" style="">
         <div class="part h-100">
@@ -74,7 +74,6 @@ if(empty($_SESSION['login'])){
                     <line x1="12" y1="20" x2="12" y2="4"></line>
                     <line x1="6" y1="20" x2="6" y2="14"></line>
                   </svg>
-
                   求職技能管理
                 </a>
               </li>
@@ -180,7 +179,7 @@ if(empty($_SESSION['login'])){
         </div>
     </div>
     </main>
-  </div>
+  </section>
   </div>
   <div id="addModal">
     <div class="addModal"></div>

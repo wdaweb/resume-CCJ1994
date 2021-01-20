@@ -6,6 +6,7 @@ body{
 }
 .title{
   color: #273c75;
+  font-weight: 600;
 }
 .addtitle{
   color: #34495e;
@@ -35,6 +36,13 @@ body{
 }
 /* sidebar */
 
+
+@media (min-width: 767.98px) {
+  .sidebar {
+    height: 100vh;
+
+  }
+}
 @media (max-width: 767.98px) {
   .sidebar {
     background: #fff;

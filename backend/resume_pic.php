@@ -8,7 +8,7 @@ $sql="select * from {$do} limit $start,$div";
 $rows=$pdo->query($sql)->fetchAll();
 ?>
 <div class="pt-3 pb-2 mb-3 border-bottom">
-  <h2><?=$tstr[$do];?></h2>
+  <h2 class="title"><?=$tstr[$do];?></h2>
 </div>
 <form action="./api/edit.php" method="post">
   <div id="works" class="row  row-cols-1 row-cols-md-3 g-3 my-3">
@@ -17,7 +17,7 @@ $rows=$pdo->query($sql)->fetchAll();
   ?>
     <div class="col my-3">
       <div class="card border-0">
-        <img src="./image/<?=$row['img'];?>" class="card-img-top" style="height:180px;object-fit:cover;">
+        <img src="./image/<?=$row['img'];?>" class="card-img-top" style="height:90px;object-fit:cover;">
         <div class="card-body">
           <div class="card-text border-bottom my-3">
             <textarea class="form-control border-0" name="text[]" placeholder="Description"

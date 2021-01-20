@@ -18,7 +18,7 @@ $rows=$pdo->query($sql)->fetchAll();
     </div>
   <?php } 
   foreach($rows as $row){ ?>
-  <div class="row g-2 mb-3 text-muted align-items-center">
+  <div class="row g-2 mb-3 text-muted align-items-center border-bottom">
     <div class="col-5 form-floating overflow-hidden">
       <input name="menu[]" type="text" class="form-control" id="meunMenu" value="<?=$row['menu'];?>">
       <label for="meunMenu">Menu</label>
@@ -27,12 +27,12 @@ $rows=$pdo->query($sql)->fetchAll();
       <input name="href[]" type="text" class="form-control" id="meunHref" value="<?=$row['href'];?>">
       <label for="meunHref">Link</label>
     </div>
-    <div class="col-2">
+    <div class="col-2 text-end">
       <button button class="subbtn btn btn-secondary" type="button"
           onclick="op('#chgModal','.chgContent','./modal/submenu.php?table=<?=$do;?>&id=<?=$row['id'];?>')">次選單</button>
     </div>
     <div class="col-12 d-flex justify-content-end align-items-center">
-      <div class="form-check mx-3">
+      <div class="form-check me-1">
         <label class="form-check-label" for="menuSh">顯示</label>
         <input class="form-check-input" type="checkbox" id="menuSh" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
       </div>

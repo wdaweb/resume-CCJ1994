@@ -55,7 +55,7 @@ $rows=$pdo->query($sql)->fetchAll();
     </div>
     <div class="col-md-12">
       <label for="infoIntro" class="form-label">Autobiography</label>
-      <textarea type="text" class="form-control" id="infoIntro" name="intro"><?=$row['intro'];?></textarea>
+      <textarea type="text" class="form-control" id="infoIntro" name="intro" style="height:150px;"><?=$row['intro'];?></textarea>
       <input type="hidden" name="table" value="<?=$do;?>">
       <input type="hidden" name="id[]" value="<?=$row['id'];?>">
     </div>
