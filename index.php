@@ -1,7 +1,11 @@
 <?php
 include_once "base.php";
-$info=$pdo->query("select * from resume_info")->fetchAll();
-$menu=$pdo->query("select * from resume_menu")->fetchAll();
+$info=$pdo->query("select * from resume_info")->fetch(PDO::FETCH_ASSOC);
+$menus=$pdo->query("select * from resume_menu where `sh`='1' && `parent`='0'")->fetchAll();
+$exps=$pdo->query("select * from resume_exp where `sh`='1' order by id desc")->fetchAll();
+$jobskills=$pdo->query("select * from resume_jobskill where `sh`='1'")->fetchAll();
+$myworks=$pdo->query("select * from resume_mywork where `sh`='1'")->fetchAll();
+$pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,13 +73,15 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
         </div>
       </button>
       <div class="collapse navbar-collapse" id="mainMenu">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 col justify-content-end ">
-          <li class="nav-item mx-3">
-            <div style="width: 58px;">
-              <a class="nav-link" href="#meHome">Home</a>
-            </div>
-          </li>
-          <li class="nav-item mx-3">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 col justify-content-end">
+          <?php foreach($menus as $menu){ ?>
+            <li class="nav-item mx-3">
+              <div style="width:<?=$menu['style'];?>;">
+                <a class="nav-link" href="<?=$menu['href'];?>"><?=$menu['menu'];?></a>
+              </div>
+            </li>
+          <?php } ?>
+          <!-- <li class="nav-item mx-3">
             <div style="width: 78px;">
               <a class="nav-link" href="#meAbout">AboutMe</a>
             </div>
@@ -94,7 +100,7 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
             <div style="width: 70px;">
               <a class="nav-link" href="#meContact">Contact</a>
             </div>
-          </li>
+          </li> -->
           <li class="nav-item mx-3">
             <div style="width: 70px;">
               
@@ -112,12 +118,8 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
                     <i class='fas fa-sign-out-alt fa-1x'></i>
                   </button>
                 </a>
-                <?php
-                }
-                ?>
-              
+                <?php } ?>
             </div>
-            
           </li>
         </ul>
       </div>
@@ -130,7 +132,7 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
       <div class="hleft text-left my-auto col-12 col-md-6">
         <div>hello,</div>
         <div>I'm Chun-Ju Chang.</div>
-        <p>WEB DESIGN | GRAPHIC DESIGN</p>
+        <p><?=$info['position'];?></p>
         <div class="hirebtn"><a class="p-2 text-center" href="#meContact">HIRE ME</a></div>
       </div>
       <div class="container col-12 col-md-6 d-flex justify-content-center mt-5">
@@ -148,7 +150,7 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
       </div>
       <div class="container d-flex flex-column col-12 col-md-7 mt-5">
         <p class="descr">
-          你好！我是張君如，來自新北市，2016年畢業於銘傳大學-餐旅管理學系，在求學與社團活動過程中，發現自己的興趣，因此開始踏上一條與本科系完全不同的道路，喜歡探索各種新事物，熱愛到處旅遊與拍照，在2018年給了自己一個挑戰，前往澳洲體驗與台灣截然不同的生活，兩年後的現在回到台灣，正在進行全新的目標。
+        <?=$info['intro'];?>
         </p>
         <div class="d-flex flex-wrap justify-content-lg-start justify-content-around mt-5">
           <div class="viewbtn me-lg-5 mb-5">
@@ -168,31 +170,33 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
       <div class="container col-lg-6 col-12 my-5 order-lg-1">
         <div id="experenceTit" class="d-md-none d-block title border-top "><div id="experienceTit">Experience</div></div>
         <div class="accordion my-4" id="accordionExp">
+          <?php foreach($exps as $exp){ ?>
           <div class="card border-0">
             <div class="card-header border-0 expblock">
-              <div class="d-flex flex-wrap" data-toggle="collapse" data-target="#seven">
+              <div class="d-flex flex-wrap" data-toggle="collapse" data-target="#exp<?=$exp['id'];?>">
                 <div class="text-md-end col-md-3 col-12">
-                  <div class="">2020</div>
-                  <div>May-Sep</div>
+                  <div><?=$exp['year'];?></div>
+                  <div><?=$exp['month'];?></div>
                 </div>
                 <div class="col-md-1">
                   <div class="d-md-block d-none timeline"></div>
                 </div>
-                <div class="align-self-end col-md-7 col-12 location">臺灣銀行</div>
+                <div class="align-self-end col-md-7 col-12 location"><?=$exp['company'];?></div>
               </div>
             </div>
-            <div id="seven" class="collapse show" data-parent="#accordionExp">
+            <div id="exp<?=$exp['id'];?>" class="collapse" data-parent="#accordionExp">
               <div class="card-body mb-4 expblock text-end">
-                <div>
-                  授信部門
-                </div>
-                <div>
-                  行政人員
-                </div>
+                    <?php $j=explode("，",$exp['job']); 
+                    for($i=0;$i<count($j);$i++) { ?>
+                      <div><?=$j[$i];?></div>
+                    <?php }; ?>
               </div>
             </div>
           </div>
-          <div class="card border-0">
+          <?php } ?>
+          <script>
+          </script>
+          <!-- <div class="card border-0">
             <div class="card-header border-0 expblock">
               <div class="d-flex flex-wrap" data-toggle="collapse" data-target="#six">
                 <div class="text-md-end col-md-3 col-12">
@@ -332,7 +336,7 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="container col-lg-6 col-12 my-auto">
@@ -340,14 +344,16 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
           My Skill
         </div>
         <div id="expert" class=" container my-4 d-flex flex-wrap justify-content-center my-auto">
+          <?php foreach($jobskills as $skill) { ?>
           <div class="col-8 my-3">
-            <div class="skill">Visual Design</div>
+            <div class="skill"><?=$skill['skill'];?></div>
             <div class="progress">
-              <div id="bar1" class="cusbar progress-bar progress-bar-striped" role="progressbar"></div>
+              <div id="bar<?=$skill['id'];?>" class="cusbar progress-bar progress-bar-striped" role="progressbar"></div>
             </div>
-            <div class="numb numb1" data-count="80">80%</div>
+            <div class="numb numb<?=$skill['id'];?>" data-count="<?=$skill['level'];?>"><?=$skill['level'];?>%</div>
           </div>
-          <div class="col-8 my-3">
+          <?php } ?>
+          <!-- <div class="col-8 my-3">
             <div class="skill">Web Front-end Design</div>
             <div class="progress">
               <div id="bar2" class="cusbar progress-bar progress-bar-striped" role="progressbar"></div>
@@ -360,7 +366,8 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
               <div id="bar3" class="cusbar progress-bar progress-bar-striped" role="progressbar"></div>
             </div>
             <div class="numb numb3" data-count="50">50%</div>
-          </div>
+          </div> -->
+          
           <div class="col-8 my-3 d-flex flex-column align-items-center">
             <div class="d-flex">
               <div class="tool mb-4">PS</div>
@@ -847,15 +854,15 @@ $menu=$pdo->query("select * from resume_menu")->fetchAll();
         </div>
         <div class="m-3">
           <a href="tel:0988763353">
-            <i class="fas fa-mobile-alt"></i>&emsp; <b><?=$info['0']['tel'];?></b>
+            <i class="fas fa-mobile-alt"></i>&emsp; <b><?=$info['tel'];?></b>
           </a>
         </div>
         <div class="m-3">
-          <i class="fas fa-map-marker-alt"></i>&emsp; <b><?=$info['0']['addr'];?></b>
+          <i class="fas fa-map-marker-alt"></i>&emsp; <b><?=$info['addr'];?></b>
         </div>
         <div class="m-3">
           <a href="mailto:a0changj2@gmail.com.tw">
-            <i class="fas fa-envelope"></i>&emsp; <b><?=$info['0']['email'];?></b>
+            <i class="fas fa-envelope"></i>&emsp; <b><?=$info['email'];?></b>
           </a>
         </div>
       </div>

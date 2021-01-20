@@ -38,9 +38,11 @@ body{
 
 
 @media (min-width: 767.98px) {
-  .sidebar {
-    height: 100vh;
-
+  .sidebar,main {
+    height: 80vh;
+  }
+  .part{
+    overflow-y: auto;
   }
 }
 @media (max-width: 767.98px) {

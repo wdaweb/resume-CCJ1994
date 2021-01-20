@@ -38,7 +38,7 @@ if(empty($_SESSION['login'])){
   </header>
   <section class="container-fluid ">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-4 col-lg-3 d-md-block sidebar collapse my-4" style="">
+      <nav id="sidebarMenu" class="col-md-4 col-lg-3 d-md-block sidebar collapse my-3" style="">
         <div class="part h-100">
           <div class="position-sticky pt-4 ">
             <ul class="nav flex-column">
@@ -165,8 +165,8 @@ if(empty($_SESSION['login'])){
           </div>
         </div>
       </nav>
-      <main class="d-flex flex-column col-md-8 col-lg-9 my-4">
-        <div class="part overflow-hidden h-100">
+      <main class="d-flex flex-column col-md-8 col-lg-9 my-3">
+        <div class="part h-100">
           <?php
         $do=(isset($_GET['do']))?$_GET['do']:'resume_message';
         $file="./backend/".$do.".php";
@@ -200,7 +200,7 @@ if(empty($_SESSION['login'])){
     </div>
   </div>
 
-  <footer class=" text-center border-top py-3 m-2" style="transform:translateY(70px);">
+  <footer class=" text-center border-top py-1 mx-2 " style="transform:translateY(70px);">
     <small>
       copyright &copy; 2021 <span style="color: #95a5a6;">CCJ Design</span>. All Rights Reserved
     </small>

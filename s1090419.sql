@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2021 年 01 月 19 日 15:56
--- 伺服器版本： 5.5.64-MariaDB
--- PHP 版本： 7.3.14
+-- 產生時間： 2021 年 01 月 20 日 15:01
+-- 伺服器版本： 10.4.14-MariaDB
+-- PHP 版本： 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -103,9 +102,9 @@ CREATE TABLE `invoices` (
   `period` tinyint(1) UNSIGNED NOT NULL,
   `payment` int(11) UNSIGNED NOT NULL,
   `date` date NOT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `item` text COLLATE utf8mb4_unicode_ci,
-  `note` text COLLATE utf8mb4_unicode_ci,
+  `create_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `item` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_acc` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -10148,7 +10147,7 @@ CREATE TABLE `login` (
   `acc` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pw` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `create_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -10270,7 +10269,7 @@ CREATE TABLE `resume_info` (
 --
 
 INSERT INTO `resume_info` (`id`, `tel`, `addr`, `email`, `position`, `intro`) VALUES
-(4, '0988763353', '新北市', 'a0changj2@gmail.com', 'web design | graphic design', '你好！我是張君如，來自新北市，2016年畢業於銘傳大學-餐旅管理學系，在求學與社團活動過程中，發現自己的興趣，因此開始踏上一條與本科系完全不同的道路，喜歡探索各種新事物，熱愛到處旅遊與拍照，在2018年給了自己一個挑戰，前往澳洲體驗與台灣截然不同的生活，兩年後的現在回到台灣，正在進行全新的目標。');
+(4, '0988763353', '新北市', 'a0changj2@gmail.com', 'WEB DESIGN | GRAPHIC DESIGN', '你好！我是張君如，來自新北市，2016年畢業於銘傳大學-餐旅管理學系，在求學與社團活動過程中，發現自己的興趣，因此開始踏上一條與本科系完全不同的道路，喜歡探索各種新事物，熱愛到處旅遊與拍照，在2018年給了自己一個挑戰，前往澳洲體驗與台灣截然不同的生活，兩年後的現在回到台灣，正在進行全新的目標。');
 
 -- --------------------------------------------------------
 
@@ -10290,14 +10289,14 @@ CREATE TABLE `resume_jobskill` (
 --
 
 INSERT INTO `resume_jobskill` (`id`, `skill`, `level`, `sh`) VALUES
-(2, 'Visual Design', 80, 1),
-(3, 'Web Front-end Design', 70, 1),
-(4, 'Web Back-end Design', 50, 1),
-(5, 'PS', 80, 1),
-(6, 'AI', 80, 1),
-(7, 'PHP', 80, 1),
-(8, 'JS', 60, 1),
-(9, 'BS', 80, 1);
+(1, 'Visual Design', 80, 1),
+(2, 'Web Front-end Design', 70, 1),
+(3, 'Web Back-end Design', 50, 1),
+(4, 'PS', 80, 1),
+(5, 'AI', 80, 1),
+(6, 'PHP', 80, 1),
+(7, 'JS', 60, 1),
+(8, 'BS', 80, 1);
 
 -- --------------------------------------------------------
 
@@ -10309,7 +10308,7 @@ CREATE TABLE `resume_menu` (
   `id` int(11) UNSIGNED NOT NULL,
   `menu` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `href` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `parent` int(11) UNSIGNED DEFAULT '0',
+  `parent` int(11) UNSIGNED DEFAULT 0,
   `sh` tinyint(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -10318,16 +10317,13 @@ CREATE TABLE `resume_menu` (
 --
 
 INSERT INTO `resume_menu` (`id`, `menu`, `href`, `parent`, `sh`) VALUES
-(2, 'trutru', 'trutru', 1, 1),
-(3, 'ts5er', 'y43y354y', 1, 1),
-(6, 't23', 't23t43teragfre', 4, 1),
-(12, 'Home', 'index.php#meHome', 0, 1),
-(14, 'AboutMe', 'index.php#meAbout', 0, 1),
-(15, 'Portfolio', 'index.php#mePortfolio', 0, 1),
-(16, 'MyWork', 'index.php#meWork', 0, 1),
-(17, 'Contact', 'index.php#meContact', 0, 1),
-(18, 'Experience', 'index.php#mePortfolio', 15, 1),
-(19, 'My Skill', 'index.php#mePortfolio', 15, 1);
+(1, 'Home', 'index.php#meHome', 0, 1),
+(2, 'AboutMe', 'index.php#meAbout', 0, 1),
+(3, 'Portfolio', 'index.php#mePortfolio', 0, 1),
+(4, 'MyWork', 'index.php#meWork', 0, 1),
+(5, 'Contact', 'index.php#meContact', 0, 1),
+(6, 'Experience', 'index.php#mePortfolio', 3, 1),
+(7, 'My Skill', 'index.php#mePortfolio', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -10341,7 +10337,7 @@ CREATE TABLE `resume_message` (
   `tel` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `msg` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `sh` tinyint(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -10415,10 +10411,10 @@ CREATE TABLE `resume_pic` (
 --
 
 INSERT INTO `resume_pic` (`id`, `img`, `text`, `sh`) VALUES
-(5, 'favicon.ico', 'favicon.ico', 1),
-(6, 'me-1.png', 'home pic', 1),
-(7, 'me-3.png', 'aboutme pic', 1),
-(8, 'logo.svg', 'footer logo', 1);
+(1, 'favicon.ico', 'favicon.ico', 1),
+(2, 'me-1.png', 'home pic', 1),
+(3, 'me-3.png', 'aboutme pic', 1),
+(4, 'logo.svg', 'footer logo', 1);
 
 --
 -- 已傾印資料表的索引
@@ -10552,13 +10548,13 @@ ALTER TABLE `resume_info`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_jobskill`
 --
 ALTER TABLE `resume_jobskill`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_menu`
 --
 ALTER TABLE `resume_menu`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_mywork`
@@ -10570,7 +10566,7 @@ ALTER TABLE `resume_mywork`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_pic`
 --
 ALTER TABLE `resume_pic`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

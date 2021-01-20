@@ -17,11 +17,11 @@ $rows=$pdo->query($sql)->fetchAll();
   ?>
     <div class="col my-3">
       <div class="card border-0">
-        <img src="./image/<?=$row['img'];?>" class="card-img-top" style="height:90px;object-fit:cover;">
+        <img src="./image/<?=$row['img'];?>" class="card-img-top" style="height:120px;object-fit:cover;">
         <div class="card-body">
           <div class="card-text border-bottom my-3">
             <textarea class="form-control border-0" name="text[]" placeholder="Description"
-              style="height: 80px"><?=$row['text'];?></textarea>
+            ><?=$row['text'];?></textarea>
           </div>
           <div class="d-flex justify-content-end">
             <div class="form-check mx-2">

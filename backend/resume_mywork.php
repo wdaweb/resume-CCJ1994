@@ -17,7 +17,7 @@ $rows=$pdo->query($sql)->fetchAll();
   ?>
     <div class="col my-2">
       <div class="card border-0">
-        <img src="./image/<?=$row['img'];?>" class="card-img-top" style="height:90px;object-fit:cover;">
+        <img src="./image/<?=$row['img'];?>" class="card-img-top" style="height:180px;object-fit:cover;">
         <div class="card-body">
           <div class="card-title form-floating border-bottom">
             <select class="form-select border-0" id="selectWork<?=$row['id'];?>" name="type[]">

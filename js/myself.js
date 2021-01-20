@@ -8,6 +8,11 @@
     $('#menubtn').click(function(){      
       $('.burger').toggleClass('toggle');      
     })
+
+// portfolio
+    let expnum=$("#accordionExp").children().length-1
+    $(`#exp${expnum}`).addClass("show")
+
     // scroll to id
     $("#mainMenu a").click(function () {
       let who = $(this).not("#cover").attr("href");
@@ -95,6 +100,7 @@
       run('.numb1', 80);
       run('.numb2', 70);
       run('.numb3', 50);
+      animationbar();
     }
   },options)
   sectionObserver.observe(counterSection);
@@ -105,6 +111,7 @@
     
     
     function animationbar() {
+    
       let bar1 = document.querySelector('#bar1');
       let bar2 = document.querySelector('#bar2');
       let bar3 = document.querySelector('#bar3');
