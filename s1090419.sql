@@ -2,8 +2,8 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- 主機： localhost
--- 產生時間： 2021 年 01 月 20 日 15:01
+-- 主機： 127.0.0.1
+-- 產生時間： 2021-01-21 09:27:51
 -- 伺服器版本： 10.4.14-MariaDB
 -- PHP 版本： 7.4.10
 
@@ -10241,13 +10241,13 @@ CREATE TABLE `resume_exp` (
 --
 
 INSERT INTO `resume_exp` (`id`, `year`, `month`, `company`, `job`, `sh`) VALUES
-(1, '2013-2016', 'September', '銘傳大學', '餐旅管理學系\r\n觀光學院系學會\r\n網路宣傳及攝影組長', 1),
-(2, '2015', 'Jun-Oct', ' 美國打工旅遊', 'Grand Teton National Park\r\nResort Worker', 1),
-(3, '2016-2017', 'February', '台北萬豪酒店', '房務部門\r\n房務員', 1),
+(1, '2013-2016', 'September', '銘傳大學', '餐旅管理學系，觀光學院系學會，網路宣傳及攝影組長', 1),
+(2, '2015', 'Jun-Oct', ' 美國打工旅遊', 'Grand Teton National Park，Resort Worker', 1),
+(3, '2016-2017', 'February', '台北萬豪酒店', '房務部門，房務員', 1),
 (4, '2017', 'Sep-Dec', '本本國際', '設計助理', 1),
 (5, '2018', 'Jan-Apr', '泰宇出版社', '教材美編人員', 1),
-(6, '2018-2020', 'April', ' 澳洲打工度假', 'Housekeeper\r\nFarm Picker', 1),
-(7, '2020', 'May-Sep', '臺灣銀行', '授信部門\r\n行政人員', 1);
+(6, '2018-2020', 'April', ' 澳洲打工度假', 'Housekeeper，Farm Picker', 1),
+(7, '2020', 'May-Sep', '臺灣銀行', '授信部門，行政人員', 1);
 
 -- --------------------------------------------------------
 
@@ -10292,11 +10292,11 @@ INSERT INTO `resume_jobskill` (`id`, `skill`, `level`, `sh`) VALUES
 (1, 'Visual Design', 80, 1),
 (2, 'Web Front-end Design', 70, 1),
 (3, 'Web Back-end Design', 50, 1),
-(4, 'PS', 80, 1),
-(5, 'AI', 80, 1),
-(6, 'PHP', 80, 1),
-(7, 'JS', 60, 1),
-(8, 'BS', 80, 1);
+(4, 'PS', 80, 0),
+(5, 'AI', 80, 0),
+(6, 'PHP', 80, 0),
+(7, 'JS', 60, 0),
+(8, 'BS', 80, 0);
 
 -- --------------------------------------------------------
 
@@ -10309,21 +10309,22 @@ CREATE TABLE `resume_menu` (
   `menu` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `href` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `parent` int(11) UNSIGNED DEFAULT 0,
-  `sh` tinyint(1) UNSIGNED NOT NULL
+  `sh` tinyint(1) UNSIGNED NOT NULL,
+  `style` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `resume_menu`
 --
 
-INSERT INTO `resume_menu` (`id`, `menu`, `href`, `parent`, `sh`) VALUES
-(1, 'Home', 'index.php#meHome', 0, 1),
-(2, 'AboutMe', 'index.php#meAbout', 0, 1),
-(3, 'Portfolio', 'index.php#mePortfolio', 0, 1),
-(4, 'MyWork', 'index.php#meWork', 0, 1),
-(5, 'Contact', 'index.php#meContact', 0, 1),
-(6, 'Experience', 'index.php#mePortfolio', 3, 1),
-(7, 'My Skill', 'index.php#mePortfolio', 3, 1);
+INSERT INTO `resume_menu` (`id`, `menu`, `href`, `parent`, `sh`, `style`) VALUES
+(1, 'Home', '#meHome', 0, 1, '58px'),
+(2, 'AboutMe', '#meAbout', 0, 1, '78px'),
+(3, 'Portfolio', '#mePortfolio', 0, 1, '78px'),
+(4, 'MyWork', '#meWork', 0, 1, '73px'),
+(5, 'Contact', '#meContact', 0, 1, '70px'),
+(6, 'Experience', '#mePortfolio', 3, 1, '0'),
+(7, 'My Skill', '#mePortfolio', 3, 1, '0');
 
 -- --------------------------------------------------------
 
@@ -10338,7 +10339,7 @@ CREATE TABLE `resume_message` (
   `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `msg` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `sh` tinyint(1) UNSIGNED NOT NULL
+  `sh` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -10346,15 +10347,7 @@ CREATE TABLE `resume_message` (
 --
 
 INSERT INTO `resume_message` (`id`, `name`, `tel`, `email`, `msg`, `date`, `sh`) VALUES
-(21, '444', '0988763353', 'a0changj2@gmail.com', '6tj6y', '2021-01-16 08:41:56', 1),
-(23, '提姆', '0988763353', 'a0changj2@gmail.com', '111111111', '2021-01-16 11:30:14', 1),
-(21, '444', '0988763353', 'a0changj2@gmail.com', '6tj6y', '2021-01-16 08:41:56', 1),
-(23, '提姆', '0988763353', 'a0changj2@gmail.com', '111111111', '2021-01-16 11:30:14', 1),
-(24, 'Me', '0988763353', 'a0changj2@gmail.com', 'Hi', '2021-01-17 07:34:27', 1),
-(25, '板橋區花', '02043064', 'beauty945@gmail.com', 'ㄐㄧˇㄙㄨㄟˋㄓㄨˋㄋ', '2021-01-17 07:37:37', 1),
-(26, '陳明靖', '0938170089', '', 'Hi', '2021-01-17 08:17:15', 1),
-(27, '想養貓', '0972003891', 'dnaemilys014@gmail.com', '好厲害！', '2021-01-17 15:39:45', 0),
-(0, 'Nina', '091111111111', 'creat82@yahoo.com.tw', 'Do your best', '2021-01-18 03:19:44', 0);
+(1, '院線片01', '0988763353', '222444@gmail.com', 'oiuh;uoi;oiu', '2021-01-21 08:19:35', 1);
 
 -- --------------------------------------------------------
 
@@ -10481,6 +10474,12 @@ ALTER TABLE `resume_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `resume_message`
+--
+ALTER TABLE `resume_message`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `resume_mywork`
 --
 ALTER TABLE `resume_mywork`
@@ -10536,7 +10535,7 @@ ALTER TABLE `resume_admin`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_exp`
 --
 ALTER TABLE `resume_exp`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_info`
@@ -10555,6 +10554,12 @@ ALTER TABLE `resume_jobskill`
 --
 ALTER TABLE `resume_menu`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `resume_message`
+--
+ALTER TABLE `resume_message`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_mywork`
