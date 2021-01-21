@@ -20,30 +20,30 @@ $rows=$pdo->query($sql)->fetchAll();
   foreach($rows as $row){ ?>
   <div class="row g-2 mb-3 text-muted ">
     <div class="col-md-2 col-6 form-floating overflow-hidden">
-      <input name="year[]" type="text" class="form-control" id="expYear" value="<?=$row['year'];?>">
-      <label for="expYear">Year</label>
+      <input name="year[]" type="text" class="form-control" id="expYear<?=$row['id'];?>" value="<?=$row['year'];?>">
+      <label for="expYear<?=$row['id'];?>">Year</label>
     </div>
     <div class="col-md-2 col-6 form-floating overflow-hidden">
-      <input name="month[]" type="text" class="form-control" id="expMonth" value="<?=$row['month'];?>">
-      <label for="expMonth">Month</label>
+      <input name="month[]" type="text" class="form-control" id="expMonth<?=$row['id'];?>" value="<?=$row['month'];?>">
+      <label for="expMonth<?=$row['id'];?>">Month</label>
     </div>
     <div class="col-md-2 form-floating overflow-hidden">
-      <input name="company[]" type="text" class="form-control" id="expCompany" value="<?=$row['company'];?>">
-      <label for="expCompany">Company</label>
+      <input name="company[]" type="text" class="form-control" id="expCompany<?=$row['id'];?>" value="<?=$row['company'];?>">
+      <label for="expCompany<?=$row['id'];?>">Company</label>
     </div>
     <div class="col-md-6 form-floating overflow-hidden">
-      <textarea name="job[]" class="form-control" id="expJob"><?=$row['job'];?></textarea>
-      <label for="expJob">Postition</label>
+      <textarea name="job[]" class="form-control" id="expJob<?=$row['id'];?>"><?=$row['job'];?></textarea>
+      <label for="expJob<?=$row['id'];?>">Postition</label>
     </div>
     <div class="col-12 d-flex justify-content-end ">
       <div class="form-check mx-3">
-        <label class="form-check-label" for="expSh">顯示</label>
-        <input class="form-check-input" type="checkbox" id="expSh" name="sh[]" value="<?=$row['id'];?>"
+        <label class="form-check-label" for="expSh<?=$row['id'];?>">顯示</label>
+        <input class="form-check-input" type="checkbox" id="expSh<?=$row['id'];?>" name="sh[]" value="<?=$row['id'];?>"
           <?=($row['sh']==1)?'checked':'';?>>
       </div>
       <div class="form-check">
-        <label class="form-check-label" for="expDel">刪除</label>
-        <input class="form-check-input" type="checkbox" id="expDel" name="del[]" value="<?=$row['id'];?>">
+        <label class="form-check-label" for="expDel<?=$row['id'];?>">刪除</label>
+        <input class="form-check-input" type="checkbox" id="expDel<?=$row['id'];?>" name="del[]" value="<?=$row['id'];?>">
         <input type="hidden" name="id[]" value="<?=$row['id'];?>">
         <input type="hidden" name="table" value="<?=$do;?>">
       </div>

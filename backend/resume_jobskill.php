@@ -20,21 +20,21 @@ $rows=$pdo->query($sql)->fetchAll();
   foreach($rows as $row){ ?>
     <div class="row g-3 mb-3 text-muted">
       <div class="col-6 form-floating overflow-hidden">
-        <input name="skill[]" type="text" class="form-control" id="jobSkill" value="<?=$row['skill'];?>">
-        <label for="jobSkill">Skill</label>
+        <input name="skill[]" type="text" class="form-control" id="jobSkill<?=$row['id'];?>" value="<?=$row['skill'];?>">
+        <label for="jobSkill<?=$row['id'];?>">Skill</label>
       </div>
       <div class="col-6 form-floating overflow-hidden">
-        <input name="level[]" type="text" class="form-control" id="jobLevel" value="<?=$row['level'];?>">
-        <label for="jobLevel">Proficient</label>
+        <input name="level[]" type="text" class="form-control" id="jobLevel<?=$row['id'];?>" value="<?=$row['level'];?>">
+        <label for="jobLevel<?=$row['id'];?>">Proficient</label>
       </div>
       <div class="col-12 d-flex justify-content-end ">
         <div class="form-check mx-3">
-          <label class="form-check-label" for="jobSh">顯示</label>
-          <input class="form-check-input" type="checkbox" id="jobSh" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
+          <label class="form-check-label" for="jobSh<?=$row['id'];?>">顯示</label>
+          <input class="form-check-input" type="checkbox" id="jobSh<?=$row['id'];?>" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
         </div>
         <div class="form-check">
-          <label class="form-check-label" for="jobDel">刪除</label>
-          <input class="form-check-input" type="checkbox" id="jobDel" name="del[]" value="<?=$row['id'];?>">
+          <label class="form-check-label" for="jobDel<?=$row['id'];?>">刪除</label>
+          <input class="form-check-input" type="checkbox" id="jobDel<?=$row['id'];?>" name="del[]" value="<?=$row['id'];?>">
           <input type="hidden" name="id[]" value="<?=$row['id'];?>">
           <input type="hidden" name="table" value="<?=$do;?>">
         </div>
@@ -75,3 +75,10 @@ $rows=$pdo->query($sql)->fetchAll();
   </div>
 </form>
 
+<script>
+  let jobNum=$("input[id^='jobDel']").length;
+    if(menuNum <=5){
+      $("input[id^='jobDel']").attr('disabled', true);
+    }
+
+</script>

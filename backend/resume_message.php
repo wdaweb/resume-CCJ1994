@@ -35,7 +35,7 @@ $start=($now-1)*$div;
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapse<?=$row['id'];?>">
-              <?=substr($row['date'],0,10);?> <?=substr( $row['msg'], 0 , 10 );?>...
+              <?=substr($row['date'],0,10);?> <?=$row['name'];?> <?=substr( $row['msg'], 0 , 10 );?>...
             </button>
           </h2>
           <div id="collapse<?=$row['id'];?>" class="accordion-collapse collapse mb-2" data-bs-parent="#unmsgcontent">
@@ -52,15 +52,15 @@ $start=($now-1)*$div;
               </div>
               <div class="col-12 d-flex justify-content-end">
                 <div class="form-check mx-5">
-                  <input class="form-check-input" type="checkbox" id="msgrd" name="sh[]" value="<?=$row['id'];?>"
+                  <input class="form-check-input" type="checkbox" id="msgrd<?=$row['id'];?>" name="sh[]" value="<?=$row['id'];?>"
                     <?=($row['sh']==1)?'checked':'';?>>
-                  <label class="form-check-label" for="msgrd">
+                  <label class="form-check-label" for="msgrd<?=$row['id'];?>">
                     Read
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="msgDel" name="del[]" value="<?=$row['id'];?>">
-                  <label class="form-check-label" for="msgDel">
+                  <input class="form-check-input" type="checkbox" id="msgDel<?=$row['id'];?>" name="del[]" value="<?=$row['id'];?>">
+                  <label class="form-check-label" for="msgDel<?=$row['id'];?>">
                     Delete!
                   </label>
                 </div>
@@ -106,7 +106,7 @@ $start=($now-1)*$div;
       $sql="select * from {$do} where `sh`='1' limit $start,$div"; 
       $rows=$pdo->query($sql)->fetchAll();
       if(empty($rows)){
-        echo "no Message";
+        echo "沒有已讀訊息...";
       }else{
       foreach($rows as $row){
       ?>
