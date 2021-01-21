@@ -45,8 +45,9 @@ foreach($_POST['id'] as $key => $id){
     case 'resume_mywork':
       $row['type']=$_POST['type'][$key];
       $row['text']=$_POST['text'][$key];
+      $row['note']=$_POST['note'][$key];
       $row['sh']=(in_array($id,$_POST['sh']))?1:0;
-      $sql="update $table set `type`='{$row['type']}',`text`='{$row['text']}',
+      $sql="update $table set `type`='{$row['type']}',`text`='{$row['text']}',`note`='{$row['note']}',
       `sh`='{$row['sh']}' where `id`='{$id}'";
     break;
     case 'resume_pic':

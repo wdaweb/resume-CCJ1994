@@ -27,9 +27,13 @@ $rows=$pdo->query($sql)->fetchAll();
             </select>
             <label for="selectWork<?=$row['id'];?>" style="font-size:12px;">作品類型</label>
           </div>
-          <div class="card-text border-bottom my-3">
+          <div class="card-text border-bottom my-1">
             <textarea class="form-control border-0" name="text[]" placeholder="Description"
             ><?=$row['text'];?></textarea>
+          </div>
+          <div class="card-text border-bottom my-1">
+            <textarea style="height:50px;" class="form-control border-0" name="note[]" placeholder="Note"
+            ><?=$row['note'];?></textarea>
           </div>
           <div class="d-flex justify-content-end">
             <div class="form-check mx-2">

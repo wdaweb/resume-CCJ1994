@@ -4,7 +4,10 @@ $info=$pdo->query("select * from resume_info")->fetch(PDO::FETCH_ASSOC);
 $menus=$pdo->query("select * from resume_menu where `sh`='1' && `parent`='0'")->fetchAll();
 $exps=$pdo->query("select * from resume_exp where `sh`='1' order by id desc")->fetchAll();
 $jobskills=$pdo->query("select * from resume_jobskill where `sh`='1'")->fetchAll();
-$myworks=$pdo->query("select * from resume_mywork where `sh`='1'")->fetchAll();
+$workWs=$pdo->query("select * from resume_mywork where `type`='1' && `sh`='1'")->fetchAll();
+$workGs=$pdo->query("select * from resume_mywork where `type`='2' && `sh`='1'")->fetchAll();
+$workPs=$pdo->query("select * from resume_mywork where `type`='3' && `sh`='1'")->fetchAll();
+$workWebs=$pdo->query("select * from resume_mywork where `sh`='1'")->fetchAll();
 $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
 ?>
 <!DOCTYPE html>
@@ -350,7 +353,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <div class="progress">
               <div id="bar<?=$skill['id'];?>" class="cusbar progress-bar progress-bar-striped" role="progressbar"></div>
             </div>
-            <div class="numb numb<?=$skill['id'];?>" data-count="<?=$skill['level'];?>"><?=$skill['level'];?>%</div>
+            <div class="numb numb<?=$skill['id'];?>" data-count="<?=$skill['level'];?>"></div>
           </div>
           <?php } ?>
           <!-- <div class="col-8 my-3">
@@ -369,14 +372,6 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           </div> -->
           
           <div class="col-8 my-3 d-flex flex-column align-items-center">
-            <div class="d-flex">
-              <div class="tool mb-4">PS</div>
-              <div class="cube"></div>
-              <div class="cube"></div>
-              <div class="cube"></div>
-              <div class="cube"></div>
-              <div class="cubeDef"></div>
-            </div>
             <div class="d-flex">
               <div class="tool mb-4">AI</div>
               <div class="cube"></div>
@@ -408,7 +403,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               <div class="cube"></div>
               <div class="cube"></div>
               <div class="cubeDef"></div>
-            </div>
+            </div> 
           </div>
         </div>
       </div>
@@ -430,7 +425,23 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="navAll" role="tabpanel">
           <div class="my-3 row row-cols-1 row-cols-md-2 g-4" id="web">
-            <div class="col mb-4">
+
+            <?php foreach($workWs as $w){ ?>
+            <div class="col mb-2">
+              <div class="card bgShadow border-0">
+                <a href="<?=$w['note'];?>" target="_blank">
+                  <img src="./img/<?=$w['img']?>" class="card-img-top">
+                  <div class="d-flex align-items-center justify-content-center hoverContent">
+                    <h5 class="subtitle text-center">
+                    <?php $wtext=explode(",",$w['text']);
+                      echo $wtext[0]."<br>".$wtext[1];?>
+                    </h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <?php } ?>
+            <!-- <div class="col mb-4">
               <div class="card bgShadow border-0">
                 <a href="http://220.128.133.15/s1090419/calendar/" target="_blank">
                   <img src="./img/calendar.png" class="card-img-top">
@@ -449,11 +460,25 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
                   </div>
                 </a>
               </div>
-            </div>
+            </div> -->
           </div>
+
           <div class="my-3 row row-cols-1 row-cols-md-4 g-4">
+          <?php foreach($workGs as $g){ ?>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM1">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
+                <img src="./img/<?=$g['img'];?>" class="card-img-top">
+                <div class="d-flex align-items-center justify-content-center hoverContent">
+                  <h5 class="subtitle text-center">
+                  <?php $gtext=explode(",",$g['text']);
+                      echo $gtext[0]."<br>".$gtext[1];?>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+            <!-- <div class="col mt-4">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG3">
                 <img src="./img/p.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Brand</h5>
@@ -461,7 +486,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM2">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG4">
                 <img src="./img/edm.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-EDM</h5>
@@ -469,7 +494,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM3">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG5">
                 <img src="./img/poster.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Poster</h5>
@@ -477,7 +502,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM7">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG6">
                 <img src="./img/sport.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Poster</h5>
@@ -485,7 +510,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM4">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG7">
                 <img src="./img/banner.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Banner</h5>
@@ -493,7 +518,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM5">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG8">
                 <img src="./img/m1.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Manual</h5>
@@ -501,26 +526,54 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM8">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG9">
                 <img src="./img/game.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Game</h5>
                 </div>
               </div>
-            </div>
+            </div> -->
+            <?php foreach($workPs as $p){ ?>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM6">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workP<?=$p['id'];?>">
+                <img src="./img/<?=$p['img'];?>" class="card-img-top">
+                <div class="d-flex align-items-center justify-content-center hoverContent">
+                  <h5 class="subtitle text-center">
+                  <?php $ptext=explode(",",$p['text']);
+                      echo $ptext[0]."<br>".$ptext[1];?>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <?php }; ?>
+            <!-- <div class="col mt-4">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workP10">
                 <img src="./img/puffing.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Photography<br>-Postcard</h5>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="tab-pane fade" id="navWeb" role="tabpanel">
           <div class="my-3 row row-cols-1 row-cols-md-2 g-4">
+          <?php foreach($workWs as $w){ ?>
             <div class="col mb-4">
+              <div class="card bgShadow border-0">
+                <a href="<?=$w['note'];?>" target="_blank">
+                  <img src="./img/<?=$w['img']?>" class="card-img-top">
+                  <div class="d-flex align-items-center justify-content-center hoverContent">
+                    <h5 class="subtitle text-center">
+                    <?php $wtext=explode(",",$w['text']);
+                      echo $wtext[0]."<br>".$wtext[1];?>
+                    </h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <?php } ?>
+            <!-- <div class="col mb-4">
               <div class="card bgShadow border-0">
                 <a href="http://220.128.133.15/s1090419/calendar/" target="_blank">
                   <img src="./img/calendar.png" class="card-img-top">
@@ -539,13 +592,27 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
                   </div>
                 </a>
               </div>
-            </div>
+            </div> -->
+
           </div>
         </div>
         <div class="tab-pane fade" id="navGraphic" role="tabpanel">
-          <div class="my-3 row row-cols-1 row-cols-md-3 g-4">
+          <div class="my-3 row row-cols-1 row-cols-md-4 g-4">
+          <?php foreach($workGs as $g){ ?>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM4">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
+                <img src="./img/<?=$g['img'];?>" class="card-img-top">
+                <div class="d-flex align-items-center justify-content-center hoverContent">
+                  <h5 class="subtitle text-center">
+                  <?php $gtext=explode(",",$g['text']);
+                      echo $gtext[0]."<br>".$gtext[1];?>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+            <!-- <div class="col mt-4">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG7">
                 <img src="./img/banner.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Banner</h5>
@@ -553,7 +620,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM5">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG8">
                 <img src="./img/m1.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Manual</h5>
@@ -561,7 +628,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM8">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG9">
                 <img src="./img/game.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Game</h5>
@@ -569,7 +636,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM1">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG3">
                 <img src="./img/p.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Brand</h5>
@@ -577,7 +644,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM2">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG4">
                 <img src="./img/edm.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Poster</h5>
@@ -585,7 +652,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM3">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG5">
                 <img src="./img/poster.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Poster</h5>
@@ -593,33 +660,76 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM7">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG6">
                 <img src="./img/sport.png" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">Graphic Design<br>-Poster</h5>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="tab-pane fade" id="navPhotography" role="tabpanel">
           <div class="my-3 row row-cols-1 row-cols-md-3 g-4">
+          <?php foreach($workPs as $p){ ?>
             <div class="col mt-4">
+              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workP<?=$p['id'];?>">
+                <img src="./img/<?=$p['img'];?>" class="card-img-top">
+                <div class="d-flex align-items-center justify-content-center hoverContent">
+                  <h5 class="subtitle text-center">
+                  <?php $ptext=explode(",",$p['text']);
+                      echo $ptext[0]."<br>".$ptext[1];?>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <?php }; ?>
+            <!-- <div class="col mt-4">
               <div class="col ">
-                <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workM6">
+                <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workP10">
                   <img src="./img/puffing.png" class="card-img-top">
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">Photography<br>-Postcard</h5>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="workM1" tabindex="-1">
+    <?php foreach($workGs as $g){ ?>
+    <div class="modal fade" id="workG<?=$g['id']?>" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content overflow-auto">
+          <div class="modal-header">
+            <h5 class="modal-title"><?php echo $gtext[0].$gtext[1];?></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="m-auto">
+            <img class="w-100" src="./img/<?=$g['img']?>" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php } ?>
+    <?php foreach($workPs as $p){ ?>
+    <div class="modal fade" id="workP<?=$p['id']?>" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content overflow-auto">
+          <div class="modal-header">
+            <h5 class="modal-title"><?php echo $ptext[0].$ptext[1];?></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="m-auto">
+            <img class="w-100" src="./img/<?=$p['img']?>" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php } ?>
+    <!-- <div class="modal fade" id="workG3" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content overflow-auto">
           <div class="modal-header">
@@ -632,7 +742,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
         </div>
       </div>
     </div>
-    <div class="modal fade" id="workM2" tabindex="-1">
+    <div class="modal fade" id="workG4" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content overflow-auto">
           <div class="modal-header">
@@ -645,7 +755,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
         </div>
       </div>
     </div>
-    <div class="modal fade" id="workM3" tabindex="-1">
+    <div class="modal fade" id="workG5" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -658,92 +768,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
         </div>
       </div>
     </div>
-    <div class="modal fade" id="workM4" tabindex="-1">
-      <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Graphic Design-Banner</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <img class="w-100" src="./img/banner.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="workM5" tabindex="-1">
-      <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Graphic Design-Manual</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div id="workCar5" class="carousel slide" data-bs-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-bs-target="#workCar5" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#workCar5" data-bs-slide-to="1"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="./img/m1.jpg" class=" w-100">
-                </div>
-                <div class="carousel-item">
-                  <img src="./img/m2.jpg" class=" w-100">
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#workCar5" role="button" data-bs-slide="prev">
-                <i class="fas fa-chevron-left"></i>
-                <span class="visually-hidden">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#workCar5" role="button" data-bs-slide="next">
-                <i class="fas fa-chevron-right"></i>
-                <span class="visually-hidden">Next</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="workM6" tabindex="-1">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Photography-Postcard</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div id="workCar6" class="carousel slide" data-bs-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-bs-target="#workCar6" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#workCar6" data-bs-slide-to="1"></li>
-                <li data-bs-target="#workCar6" data-bs-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="./img/puffing.jpg" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                  <img src="./img/london.jpg" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                  <img src="./img/KATUNGA.jpg" class="d-block w-100">
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#workCar6" role="button" data-bs-slide="prev">
-                <i class="fas fa-chevron-left"></i>
-                <span class="visually-hidden">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#workCar6" role="button" data-bs-slide="next">
-                <i class="fas fa-chevron-right"></i>
-                <span class="visually-hidden">Next</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="workM7" tabindex="-1">
+    <div class="modal fade" id="workG6" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -781,7 +806,54 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
         </div>
       </div>
     </div>
-    <div class="modal fade" id="workM8" tabindex="-1">
+    <div class="modal fade" id="workG7" tabindex="-1">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Graphic Design-Banner</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <img class="w-100" src="./img/banner.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="workG8" tabindex="-1">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Graphic Design-Manual</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div id="workCar5" class="carousel slide" data-bs-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-bs-target="#workCar5" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#workCar5" data-bs-slide-to="1"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="./img/m1.jpg" class=" w-100">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/m2.jpg" class=" w-100">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#workCar5" role="button" data-bs-slide="prev">
+                <i class="fas fa-chevron-left"></i>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#workCar5" role="button" data-bs-slide="next">
+                <i class="fas fa-chevron-right"></i>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="workG9" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -815,7 +887,44 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
         </div>
       </div>
     </div>
-
+    <div class="modal fade" id="workP10" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Photography-Postcard</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div id="workCar6" class="carousel slide" data-bs-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-bs-target="#workCar6" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#workCar6" data-bs-slide-to="1"></li>
+                <li data-bs-target="#workCar6" data-bs-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="./img/puffing.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/london.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/KATUNGA.jpg" class="d-block w-100">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#workCar6" role="button" data-bs-slide="prev">
+                <i class="fas fa-chevron-left"></i>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#workCar6" role="button" data-bs-slide="next">
+                <i class="fas fa-chevron-right"></i>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
 
     </div>
   </section>

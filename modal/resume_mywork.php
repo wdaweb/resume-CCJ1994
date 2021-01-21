@@ -23,6 +23,10 @@
       <input type="hidden" name="table" value="<?=$do;?>">
     </div>
     <div class="col-8">
+      <label for="addNote" class="form-label">Note</label>
+      <textarea class="form-control" id="addNote" name="note"></textarea>
+    </div>
+    <div class="col-8">
       <input type="submit" class="btn saveBtn" value="Add it!">
     </div>
   </div>

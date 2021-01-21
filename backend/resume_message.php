@@ -115,7 +115,7 @@ $start=($now-1)*$div;
           <h2 class="accordion-header">
             <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse"
               data-bs-target="#collapse<?=$row['id'];?>">
-              <?=substr($row['date'],0,10);?> <?=substr( $row['msg'], 0 , 10 );?>...
+              <?=substr($row['date'],0,10);?> <?=$row['name'];?> <?=substr( $row['msg'], 0 , 10 );?>...
             </button>
           </h2>
           <div id="collapse<?=$row['id'];?>" class="accordion-collapse collapse" data-bs-parent="#msgcontent">

@@ -29,6 +29,7 @@ switch($table){
       case 'resume_mywork':
             $data['type']=$_POST['type'];
             $data['text']=$_POST['text'];
+            $data['note']=$_POST['note'];
             $data['sh']=1;
       break;
       case 'resume_pic':
