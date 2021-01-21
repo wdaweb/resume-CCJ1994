@@ -2,8 +2,8 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1
--- 產生時間： 2021-01-21 09:27:51
+-- 主機： localhost
+-- 產生時間： 2021 年 01 月 21 日 16:17
 -- 伺服器版本： 10.4.14-MariaDB
 -- PHP 版本： 7.4.10
 
@@ -10257,7 +10257,7 @@ INSERT INTO `resume_exp` (`id`, `year`, `month`, `company`, `job`, `sh`) VALUES
 
 CREATE TABLE `resume_info` (
   `id` int(10) UNSIGNED NOT NULL,
-  `tel` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `addr` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -10269,7 +10269,7 @@ CREATE TABLE `resume_info` (
 --
 
 INSERT INTO `resume_info` (`id`, `tel`, `addr`, `email`, `position`, `intro`) VALUES
-(4, '0988763353', '新北市', 'a0changj2@gmail.com', 'WEB DESIGN | GRAPHIC DESIGN', '你好！我是張君如，來自新北市，2016年畢業於銘傳大學-餐旅管理學系，在求學與社團活動過程中，發現自己的興趣，因此開始踏上一條與本科系完全不同的道路，喜歡探索各種新事物，熱愛到處旅遊與拍照，在2018年給了自己一個挑戰，前往澳洲體驗與台灣截然不同的生活，兩年後的現在回到台灣，正在進行全新的目標。');
+(4, '0988-763-353', 'New Taipei City', 'a0changj2@gmail.com', 'WEB DESIGN | GRAPHIC DESIGN', '你好！我是張君如，來自新北市，2016年畢業於銘傳大學-餐旅管理學系，在求學與社團活動過程中，發現自己的興趣，因此開始踏上一條與本科系完全不同的道路，喜歡探索各種新事物，熱愛到處旅遊與拍照，在2018年給了自己一個挑戰，前往澳洲體驗與台灣截然不同的生活，兩年後的現在回到台灣，正在進行全新的目標。');
 
 -- --------------------------------------------------------
 
@@ -10347,7 +10347,9 @@ CREATE TABLE `resume_message` (
 --
 
 INSERT INTO `resume_message` (`id`, `name`, `tel`, `email`, `msg`, `date`, `sh`) VALUES
-(1, '院線片01', '0988763353', '222444@gmail.com', 'oiuh;uoi;oiu', '2021-01-21 08:19:35', 1);
+(1, '院線片01', '0988763353', '222444@gmail.com', 'oiuh;uoi;oiu', '2021-01-21 08:19:35', 0),
+(2, '提姆', '0911111111', 'a0changj2@gmail.com', 'rgerh', '2021-01-21 14:42:57', 0),
+(3, 'ALEX', '0911111111', 'fgfdhgfh@gmail.com', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel error obcaecati alias veritatis possimus laudantium at corrupti ea quam. Dolorum error aperiam distinctio velit omnis aspernatur repellat voluptatum earum at.\r\n', '2021-01-21 14:43:56', 0);
 
 -- --------------------------------------------------------
 
@@ -10360,6 +10362,7 @@ CREATE TABLE `resume_mywork` (
   `type` tinyint(1) UNSIGNED NOT NULL,
   `img` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sh` tinyint(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -10367,24 +10370,24 @@ CREATE TABLE `resume_mywork` (
 -- 傾印資料表的資料 `resume_mywork`
 --
 
-INSERT INTO `resume_mywork` (`id`, `type`, `img`, `text`, `sh`) VALUES
-(12, 2, 'calendar.png', 'Web Design\r\n-Calendar', 1),
-(13, 2, 'invoice.png', 'Web Design\r\n-Invoice', 1),
-(14, 3, 'p.png', 'Graphic Design\r\n-Brand', 1),
-(15, 3, 'edm.png', 'Graphic Design\r\n-EDM', 1),
-(16, 3, 'poster.png', 'Graphic Design\r\n-Poster', 1),
-(17, 2, 'sport.png', 'Graphic Design\r\n-Poster', 1),
-(18, 2, 'banner.png', 'Graphic Design\r\n-Banner', 1),
-(19, 2, 'm1.png', 'Graphic Design\r\n-Manual', 1),
-(20, 2, 'game.png', 'Graphic Design\r\n-Game', 1),
-(21, 3, 'puffing.png', 'Photography\r\n-Postcard', 1),
-(22, 2, 'sport2.jpg', 'Graphic Design-Postercard', 0),
-(24, 2, 'sport1.jpg', 'Graphic Design-Postercard', 1),
-(25, 1, 'sport3.jpg', 'Graphic Design-Postercard', 1),
-(26, 2, 'm2.jpg', 'Graphic Design-Manual', 1),
-(27, 2, 'game.jpg', 'Graphic Design-Game', 1),
-(28, 3, 'london.jpg', 'Photography-Postcard', 1),
-(29, 3, 'KATUNGA.jpg', 'Photography-Postcard', 1);
+INSERT INTO `resume_mywork` (`id`, `type`, `img`, `text`, `note`, `sh`) VALUES
+(1, 1, 'calendar.png', 'Web Design,-Calendar', 'http://220.128.133.15/s1090419/calendar/', 1),
+(2, 1, 'invoice.png', 'Web Design,-Invoice', 'http://220.128.133.15/s1090419/invoice/', 1),
+(3, 2, 'p.png', 'Graphic Design,-Brand', NULL, 1),
+(4, 2, 'edm.png', 'Graphic Design,-EDM', NULL, 1),
+(5, 2, 'poster.png', 'Graphic Design,-Poster', NULL, 1),
+(6, 2, 'sport.png', 'Graphic Design,-Poster', NULL, 1),
+(7, 2, 'banner.png', 'Graphic Design,-Banner', NULL, 1),
+(8, 2, 'm1.png', 'Graphic Design,-Manual', NULL, 1),
+(9, 2, 'game.png', 'Graphic Design,-Game', NULL, 1),
+(10, 3, 'puffing.png', 'Photography,-Postcard', NULL, 1),
+(11, 2, 'sport2.jpg', 'Graphic Design,-Postercard', 'sport', 0),
+(12, 2, 'sport1.jpg', 'Graphic Design,-Postercard', 'sport', 0),
+(13, 2, 'sport3.jpg', 'Graphic Design,-Postercard', 'sport', 0),
+(14, 2, 'm2.jpg', 'Graphic Design,-Manual', 'manual', 0),
+(15, 2, 'game.jpg', 'Graphic Design,-Game', 'game', 0),
+(16, 3, 'london.jpg', 'Photography,-Postcard', 'postcard', 0),
+(17, 3, 'KATUNGA.jpg', 'Photography,-Postcard', 'postcard', 0);
 
 -- --------------------------------------------------------
 
@@ -10535,7 +10538,7 @@ ALTER TABLE `resume_admin`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_exp`
 --
 ALTER TABLE `resume_exp`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_info`
@@ -10553,19 +10556,19 @@ ALTER TABLE `resume_jobskill`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_menu`
 --
 ALTER TABLE `resume_menu`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_message`
 --
 ALTER TABLE `resume_message`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_mywork`
 --
 ALTER TABLE `resume_mywork`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_pic`

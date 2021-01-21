@@ -160,7 +160,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <a class="p-3" href="#meWork">View Works</a>
           </div>
           <div class="dwlbtn "><a class="p-3"
-              href="https://www.cakeresume.com/pdf/s--wxJpm0TmLoufBd5egd6u1A--/vJn5M.pdf">Download CV</a></div>
+              href="https://www.cakeresume.com/pdf/s--6LR5klUHpoQWkyzj1TrQ4A--/xZ2mQ.pdf">Download CV</a></div>
         </div>
       </div>
     </div>
