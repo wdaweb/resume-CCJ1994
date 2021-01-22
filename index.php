@@ -430,7 +430,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <div class="col mb-2">
               <div class="card bgShadow border-0">
                 <a href="<?=$w['note'];?>" target="_blank">
-                  <img src="./img/<?=$w['img']?>" class="card-img-top">
+                  <img src="./image/<?=$w['img']?>" class="card-img-top">
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
                     <?php $wtext=explode(",",$w['text']);
@@ -467,7 +467,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           <?php foreach($workGs as $g){ ?>
             <div class="col mt-4">
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
-                <img src="./img/<?=$g['img'];?>" class="card-img-top">
+                <img src="./image/<?=$g['img'];?>" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
                   <?php $gtext=explode(",",$g['text']);
@@ -536,7 +536,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <?php foreach($workPs as $p){ ?>
             <div class="col mt-4">
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workP<?=$p['id'];?>">
-                <img src="./img/<?=$p['img'];?>" class="card-img-top">
+                <img src="./image/<?=$p['img'];?>" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
                   <?php $ptext=explode(",",$p['text']);
@@ -562,7 +562,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <div class="col mb-4">
               <div class="card bgShadow border-0">
                 <a href="<?=$w['note'];?>" target="_blank">
-                  <img src="./img/<?=$w['img']?>" class="card-img-top">
+                  <img src="./image/<?=$w['img']?>" class="card-img-top">
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
                     <?php $wtext=explode(",",$w['text']);
@@ -601,7 +601,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           <?php foreach($workGs as $g){ ?>
             <div class="col mt-4">
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
-                <img src="./img/<?=$g['img'];?>" class="card-img-top">
+                <img src="./image/<?=$g['img'];?>" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
                   <?php $gtext=explode(",",$g['text']);
@@ -674,7 +674,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           <?php foreach($workPs as $p){ ?>
             <div class="col mt-4">
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workP<?=$p['id'];?>">
-                <img src="./img/<?=$p['img'];?>" class="card-img-top">
+                <img src="./image/<?=$p['img'];?>" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
                   <?php $ptext=explode(",",$p['text']);
@@ -708,7 +708,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="m-auto">
-            <img class="w-100" src="./img/<?=$g['img']?>" alt="">
+            <img class="w-100" src="./image/<?=$g['img']?>" alt="">
           </div>
         </div>
       </div>
@@ -723,7 +723,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="m-auto">
-            <img class="w-100" src="./img/<?=$p['img']?>" alt="">
+            <img class="w-100" src="./image/<?=$p['img']?>" alt="">
           </div>
         </div>
       </div>
