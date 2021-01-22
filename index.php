@@ -17,7 +17,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CCJ's Resume</title>
-  <link rel="shortcut icon" type="image/x-ico" href="img/favicon.ico">
+  <link rel="shortcut icon" type="image/x-ico" href="./image/<?=$pic[0]['img'];?>">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -139,7 +139,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
         <div class="hirebtn"><a class="p-2 text-center" href="#meContact">HIRE ME</a></div>
       </div>
       <div class="container col-12 col-md-6 d-flex justify-content-center mt-5">
-        <img class="mepic1" src="./img/me-1.png">
+        <img class="mepic1" src="./image/<?=$pic[1]['img'];?>">
       </div>
     </div>
 
@@ -149,7 +149,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
     <div class="container d-flex justify-content-around align-items-center flex-wrap">
       <div class="container text-center col-12 col-md-5">
         <div class="title bgsq">About Me</div>
-        <div><img class="mepic2" src="./img/me-3.png" alt=""></div>
+        <div><img class="mepic2" src="./image/<?=$pic[2]['img'];?>" alt=""></div>
       </div>
       <div class="container d-flex flex-column col-12 col-md-7 mt-5">
         <p class="descr">
@@ -983,7 +983,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
   <!-- footer -->
   <footer class="text-center my-5">
     <small>
-      <img src="./img/logo.svg" width="60px" alt=""><br>
+      <img src="./image/<?=$pic[3]['img'];?>" width="60px" alt=""><br>
       copyright &copy; 2021 <span style="color: #95a5a6;">CCJ Design</span>. All Rights Reserved
     </small>
   </footer>
