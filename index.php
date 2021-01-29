@@ -424,7 +424,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
       </nav>
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="navAll" role="tabpanel">
-          <div class="my-3 row row-cols-1 row-cols-md-2 g-4" id="web">
+          <div class="my-3 row row-cols-1 row-cols-md-3 g-4" id="web">
 
             <?php foreach($workWs as $w){ ?>
             <div class="col mb-2">
@@ -557,7 +557,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           </div>
         </div>
         <div class="tab-pane fade" id="navWeb" role="tabpanel">
-          <div class="my-3 row row-cols-1 row-cols-md-2 g-4">
+          <div class="my-3 row row-cols-1 row-cols-md-3 g-4">
           <?php foreach($workWs as $w){ ?>
             <div class="col mb-4">
               <div class="card bgShadow border-0">
