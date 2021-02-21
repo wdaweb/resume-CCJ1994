@@ -24,7 +24,18 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&family=Ubuntu:wght@700&display=swap"
     rel="stylesheet">
   <script src="https://kit.fontawesome.com/7e94f0c211.js" crossorigin="anonymous"></script>
-  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VSZ0RSKMVY"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'G-VSZ0RSKMVY');
+  </script>
 </head>
 
 <body>
@@ -40,11 +51,13 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
         </div>
         <form action="api/login.php" method="post">
           <div class="form-floating my-2 ">
-            <input type="text" class="form-control border-0" id="floatingInput" placeholder="account" name="acc" required>
+            <input type="text" class="form-control border-0" id="floatingInput" placeholder="account" name="acc"
+              required>
             <label for="floatingInput">Account</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control border-0" id="floatingPassword" placeholder="Password" name="pw" required>
+            <input type="password" class="form-control border-0" id="floatingPassword" placeholder="Password" name="pw"
+              required>
             <label for="floatingPassword">Password</label>
           </div>
           <div class="text-end">
@@ -63,28 +76,29 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
     <nav class="navbar navbar-expand-lg navbar-light container">
       <?php if(isset($_SESSION['login'])){ ?>
       <a class="navbar-brand" href="backend.php">
-      <?php }else{ ?>
+        <?php }else{ ?>
         <a class="navbar-brand" href="#meHome">
-        <?php };  ?>
-        <img src="./img/logo.svg" width="40px">
-      </a>
-      <button id="menubtn" class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainMenu">
-        <div class="burger">
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </div>
-      </button>
-      <div class="collapse navbar-collapse" id="mainMenu">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 col justify-content-end">
-          <?php foreach($menus as $menu){ ?>
+          <?php };  ?>
+          <img src="./img/logo.svg" width="40px">
+        </a>
+        <button id="menubtn" class="navbar-toggler border-0" type="button" data-toggle="collapse"
+          data-target="#mainMenu">
+          <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenu">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0 col justify-content-end">
+            <?php foreach($menus as $menu){ ?>
             <li class="nav-item mx-3">
               <div style="width:<?=$menu['style'];?>;">
                 <a class="nav-link" href="<?=$menu['href'];?>"><?=$menu['menu'];?></a>
               </div>
             </li>
-          <?php } ?>
-          <!-- <li class="nav-item mx-3">
+            <?php } ?>
+            <!-- <li class="nav-item mx-3">
             <div style="width: 78px;">
               <a class="nav-link" href="#meAbout">AboutMe</a>
             </div>
@@ -104,9 +118,9 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               <a class="nav-link" href="#meContact">Contact</a>
             </div>
           </li> -->
-          <li class="nav-item mx-3">
-            <div style="width: 70px;">
-              
+            <li class="nav-item mx-3">
+              <div style="width: 70px;">
+
                 <?php
                 if(empty($_SESSION['login'])){
                   ?>
@@ -122,10 +136,10 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
                   </button>
                 </a>
                 <?php } ?>
-            </div>
-          </li>
-        </ul>
-      </div>
+              </div>
+            </li>
+          </ul>
+        </div>
     </nav>
   </header>
 
@@ -134,7 +148,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
     <div class="container d-flex flex-wrap justify-content-center">
       <div class="hleft text-left my-auto col-12 col-md-6">
         <div>hello,</div>
-        <div>I'm Chun-Ju Chang.</div>
+        <div>I'm Rowan Chang.</div>
         <p><?=$info['position'];?></p>
         <div class="hirebtn"><a class="p-2 text-center" href="#meContact">HIRE ME</a></div>
       </div>
@@ -153,7 +167,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
       </div>
       <div class="container d-flex flex-column col-12 col-md-7 mt-5">
         <p class="descr">
-        <?=$info['intro'];?>
+          <?=$info['intro'];?>
         </p>
         <div class="d-flex flex-wrap justify-content-lg-start justify-content-around mt-5">
           <div class="viewbtn me-lg-5 mb-5">
@@ -169,9 +183,13 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
   <!-- Portfolio -->
   <section id="mePortfolio" class="my-5">
     <div class="container d-flex flex-wrap">
-      <div class="d-md-block d-none col-12 border-bottom text-end title"><div id="portfolioTit">Portfolio</div></div>
+      <div class="d-md-block d-none col-12 border-bottom text-end title">
+        <div id="portfolioTit">Portfolio</div>
+      </div>
       <div class="container col-lg-6 col-12 my-5 order-lg-1">
-        <div id="experenceTit" class="d-md-none d-block title border-top "><div id="experienceTit">Experience</div></div>
+        <div id="experenceTit" class="d-md-none d-block title border-top ">
+          <div id="experienceTit">Experience</div>
+        </div>
         <div class="accordion my-4" id="accordionExp">
           <?php foreach($exps as $exp){ ?>
           <div class="card border-0">
@@ -189,10 +207,10 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             </div>
             <div id="exp<?=$exp['id'];?>" class="collapse" data-parent="#accordionExp">
               <div class="card-body mb-4 expblock text-end">
-                    <?php $j=explode("，",$exp['job']); 
+                <?php $j=explode("，",$exp['job']); 
                     for($i=0;$i<count($j);$i++) { ?>
-                      <div><?=$j[$i];?></div>
-                    <?php }; ?>
+                <div><?=$j[$i];?></div>
+                <?php }; ?>
               </div>
             </div>
           </div>
@@ -370,7 +388,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             </div>
             <div class="numb numb3" data-count="50">50%</div>
           </div> -->
-          
+
           <div class="col-8 my-3 d-flex flex-column align-items-center">
             <div class="d-flex">
               <div class="tool mb-4">AI</div>
@@ -403,7 +421,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               <div class="cube"></div>
               <div class="cube"></div>
               <div class="cubeDef"></div>
-            </div> 
+            </div>
           </div>
         </div>
       </div>
@@ -424,16 +442,16 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
       </nav>
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="navAll" role="tabpanel">
-          <div class="my-3 row row-cols-1 row-cols-md-3 g-4" id="web">
+          <div class="my-3 row row-cols-1 row-cols-md-2 g-4" id="web">
 
             <?php foreach($workWs as $w){ ?>
             <div class="col mb-2">
-              <div class="card bgShadow border-0">
+              <div class="card bgShadow border-0 h-100">
                 <a href="<?=$w['note'];?>" target="_blank">
                   <img src="./image/<?=$w['img']?>" class="card-img-top">
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
-                    <?php $wtext=explode(",",$w['text']);
+                      <?php $wtext=explode(",",$w['text']);
                       echo $wtext[0]."<br>".$wtext[1];?>
                     </h5>
                   </div>
@@ -464,19 +482,19 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           </div>
 
           <div class="my-3 row row-cols-1 row-cols-md-4 g-4">
-          <?php foreach($workGs as $g){ ?>
+            <?php foreach($workGs as $g){ ?>
             <div class="col mt-4">
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
                 <img src="./image/<?=$g['img'];?>" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
-                  <?php $gtext=explode(",",$g['text']);
+                    <?php $gtext=explode(",",$g['text']);
                       echo $gtext[0]."<br>".$gtext[1];?>
                   </h5>
                 </div>
               </div>
             </div>
-          <?php } ?>
+            <?php } ?>
             <!-- <div class="col mt-4">
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG3">
                 <img src="./img/p.png" class="card-img-top">
@@ -539,7 +557,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
                 <img src="./image/<?=$p['img'];?>" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
-                  <?php $ptext=explode(",",$p['text']);
+                    <?php $ptext=explode(",",$p['text']);
                       echo $ptext[0]."<br>".$ptext[1];?>
                   </h5>
                 </div>
@@ -557,15 +575,15 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           </div>
         </div>
         <div class="tab-pane fade" id="navWeb" role="tabpanel">
-          <div class="my-3 row row-cols-1 row-cols-md-3 g-4">
-          <?php foreach($workWs as $w){ ?>
+          <div class="my-3 row row-cols-1 row-cols-md-2 g-4">
+            <?php foreach($workWs as $w){ ?>
             <div class="col mb-4">
-              <div class="card bgShadow border-0">
+              <div class="card bgShadow border-0 h-100">
                 <a href="<?=$w['note'];?>" target="_blank">
                   <img src="./image/<?=$w['img']?>" class="card-img-top">
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
-                    <?php $wtext=explode(",",$w['text']);
+                      <?php $wtext=explode(",",$w['text']);
                       echo $wtext[0]."<br>".$wtext[1];?>
                     </h5>
                   </div>
@@ -598,19 +616,19 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
         </div>
         <div class="tab-pane fade" id="navGraphic" role="tabpanel">
           <div class="my-3 row row-cols-1 row-cols-md-4 g-4">
-          <?php foreach($workGs as $g){ ?>
+            <?php foreach($workGs as $g){ ?>
             <div class="col mt-4">
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
                 <img src="./image/<?=$g['img'];?>" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
-                  <?php $gtext=explode(",",$g['text']);
+                    <?php $gtext=explode(",",$g['text']);
                       echo $gtext[0]."<br>".$gtext[1];?>
                   </h5>
                 </div>
               </div>
             </div>
-          <?php } ?>
+            <?php } ?>
             <!-- <div class="col mt-4">
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG7">
                 <img src="./img/banner.png" class="card-img-top">
@@ -671,13 +689,13 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
         </div>
         <div class="tab-pane fade" id="navPhotography" role="tabpanel">
           <div class="my-3 row row-cols-1 row-cols-md-3 g-4">
-          <?php foreach($workPs as $p){ ?>
+            <?php foreach($workPs as $p){ ?>
             <div class="col mt-4">
               <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workP<?=$p['id'];?>">
                 <img src="./image/<?=$p['img'];?>" class="card-img-top">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
-                  <?php $ptext=explode(",",$p['text']);
+                    <?php $ptext=explode(",",$p['text']);
                       echo $ptext[0]."<br>".$ptext[1];?>
                   </h5>
                 </div>
@@ -929,7 +947,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
     </div>
   </section>
   <!-- Contact -->
-  <section id="meContact" class="my-5">
+  <section id="meContact" class="mt-5 mb-2">
     <div class="container overflow-hidden">
       <div id="contactmeTit" class="text-center my-5 title contitle">Contact ME</div>
       <div class="d-flex flex-column  flex-wrap">
@@ -939,16 +957,18 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <label for="name">NAME</label>
           </div>
           <div class="col-lg-6 col-md-6 col-12 offset-lg-1 offset-md-1 form-floating mb-4 bgShadow">
-            <input type="tel" class="form-control border-0" id="tel" name="tel" placeholder="your number" minlength="8" maxlength="12" required>
+            <input type="tel" class="form-control border-0" id="tel" name="tel" placeholder="your number" minlength="8"
+              maxlength="12" required>
             <label for="tel">PHONE NUMBER</label>
           </div>
           <div class="col-12 form-floating mb-4 bgShadow">
-            <input type="email" class="form-control border-0" id="email" name="email" placeholder="email address" required>
+            <input type="email" class="form-control border-0" id="email" name="email" placeholder="email address"
+              required>
             <label for="email">EMAIL</label>
           </div>
           <div class="col-12 form-floating mb-4 bgShadow">
-            <textarea style="height:90px;" type="text" class="form-control border-0" id="msg"
-              name="msg" placeholder="message" required></textarea>
+            <textarea style="height:90px;" type="text" class="form-control border-0" id="msg" name="msg"
+              placeholder="message" required></textarea>
             <label for="msg">MESSAGE</label>
           </div>
           <input type="hidden" name="table" value="resume_message">
@@ -974,6 +994,10 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <i class="fas fa-envelope"></i>&emsp; <b><?=$info['email'];?></b>
           </a>
         </div>
+        <div class="my-3">
+          <a class="mx-2" href="https://github.com/CCJ1994"><i style="color:#57606f;" class="fab fa-github"></i></a>
+          <a class="mx-2" href="https://codepen.io/CCJ1994"><i style="color:#57606f;" class="fab fa-codepen"></i></a>
+        </div>
       </div>
     </div>
 
@@ -981,7 +1005,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
   </section>
 
   <!-- footer -->
-  <footer class="text-center my-5">
+  <footer class="text-center my-1">
     <small>
       <img src="./image/<?=$pic[3]['img'];?>" width="60px" alt=""><br>
       copyright &copy; 2021 <span style="color: #95a5a6;">CCJ Design</span>. All Rights Reserved
