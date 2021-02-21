@@ -434,21 +434,26 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
       <div id="myworkTit" class="text-center title mx-3">My Work</div>
       <nav>
         <div class="nav justify-content-lg-start justify-content-center" id="nav-tab" role="tablist">
-          <a class="mx-2 nav-link active" id="tabAll" data-bs-toggle="tab" href="#navAll" role="tab">All</a>
-          <a class="mx-2 nav-link" id="tabWeb" data-bs-toggle="tab" href="#navWeb" role="tab">Web Design</a>
+          <a class="mx-2 nav-link active" id="tabWeb" data-bs-toggle="tab" href="#navWeb" role="tab">Web Design</a>
           <a class="mx-2 nav-link" id="tabGraphic" data-bs-toggle="tab" href="#navGraphic" role="tab">Graphic Design</a>
           <a class="mx-2 nav-link" id="tabPhoto" data-bs-toggle="tab" href="#navPhotography" role="tab">Photography</a>
+          <a class="mx-2 nav-link" id="tabAll" data-bs-toggle="tab" href="#navAll" role="tab">All</a>
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="navAll" role="tabpanel">
-          <div class="my-3 row row-cols-1 row-cols-md-2 g-4" id="web">
+        <div class="tab-pane fade" id="navAll" role="tabpanel">
+          <div class="my-3 row row-cols-1 row-cols-md-3 g-4" id="web">
 
-            <?php foreach($workWs as $w){ ?>
+            <?php foreach($workWs as $w){ 
+              $wnote=explode(",",$w['note']); ?>
             <div class="col mb-2">
               <div class="card bgShadow border-0 h-100">
-                <a href="<?=$w['note'];?>" target="_blank">
-                  <img src="./image/<?=$w['img']?>" class="card-img-top rounded">
+                <a href="<?php echo $wnote[0];?>" target="_blank">
+                  <img src="./image/<?=$w['img']?>" class="card-img-top">
+                  <div class="card-body text-muted">
+                    <h5 class="card-title">應用技術</h5>
+                    <p class="card-text"><?php echo $wnote[1];?></p>
+                  </div>
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
                       <?php $wtext=explode(",",$w['text']);
@@ -574,13 +579,18 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             </div> -->
           </div>
         </div>
-        <div class="tab-pane fade" id="navWeb" role="tabpanel">
-          <div class="my-3 row row-cols-1 row-cols-md-2 g-4">
-            <?php foreach($workWs as $w){ ?>
+        <div class="tab-pane fade show active" id="navWeb" role="tabpanel">
+          <div class="my-3 row row-cols-1 row-cols-md-3 g-4">
+            <?php foreach($workWs as $w){ 
+              $wnote=explode(",",$w['note']);?>
             <div class="col mb-4">
               <div class="card bgShadow border-0 h-100">
-                <a href="<?=$w['note'];?>" target="_blank">
-                  <img src="./image/<?=$w['img']?>" class="card-img-top rounded">
+                <a href="<?php echo $wnote[0];?>" target="_blank">
+                  <img src="./image/<?=$w['img']?>" class="card-img-top">
+                  <div class="card-body text-muted">
+                    <h5 class="card-title">應用技術</h5>
+                    <p class="card-text"><?php echo $wnote[1];?></p>
+                  </div>
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
                       <?php $wtext=explode(",",$w['text']);

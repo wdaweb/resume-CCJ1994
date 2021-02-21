@@ -292,11 +292,11 @@ z-index: -1;
 .cusbar3{
   background-color: #34495e;
   width: 0%;
-  animation: bar3 1s linear forwards;
+  animation: bar3 1.6s linear forwards;
 }
 @keyframes bar3{
   to{
-    width: 50%;
+    width: 70%;
   }
 }
 
