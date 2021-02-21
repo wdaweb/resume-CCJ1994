@@ -448,7 +448,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <div class="col mb-2">
               <div class="card bgShadow border-0 h-100">
                 <a href="<?=$w['note'];?>" target="_blank">
-                  <img src="./image/<?=$w['img']?>" class="card-img-top">
+                  <img src="./image/<?=$w['img']?>" class="card-img-top rounded">
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
                       <?php $wtext=explode(",",$w['text']);
@@ -484,8 +484,8 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           <div class="my-3 row row-cols-1 row-cols-md-4 g-4">
             <?php foreach($workGs as $g){ ?>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
-                <img src="./image/<?=$g['img'];?>" class="card-img-top">
+              <div class="card bgShadow border-0 h-100" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
+                <img src="./image/<?=$g['img'];?>" class="card-img-top rounded">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
                     <?php $gtext=explode(",",$g['text']);
@@ -553,8 +553,8 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             </div> -->
             <?php foreach($workPs as $p){ ?>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workP<?=$p['id'];?>">
-                <img src="./image/<?=$p['img'];?>" class="card-img-top">
+              <div class="card bgShadow border-0 h-100" data-bs-toggle="modal" data-bs-target="#workP<?=$p['id'];?>">
+                <img src="./image/<?=$p['img'];?>" class="card-img-top rounded">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
                     <?php $ptext=explode(",",$p['text']);
@@ -580,7 +580,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             <div class="col mb-4">
               <div class="card bgShadow border-0 h-100">
                 <a href="<?=$w['note'];?>" target="_blank">
-                  <img src="./image/<?=$w['img']?>" class="card-img-top">
+                  <img src="./image/<?=$w['img']?>" class="card-img-top rounded">
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
                       <?php $wtext=explode(",",$w['text']);
@@ -618,8 +618,8 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           <div class="my-3 row row-cols-1 row-cols-md-4 g-4">
             <?php foreach($workGs as $g){ ?>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
-                <img src="./image/<?=$g['img'];?>" class="card-img-top">
+              <div class="card bgShadow border-0 h-100" data-bs-toggle="modal" data-bs-target="#workG<?=$g['id']?>">
+                <img src="./image/<?=$g['img'];?>" class="card-img-top rounded">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
                     <?php $gtext=explode(",",$g['text']);
@@ -688,11 +688,11 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
           </div>
         </div>
         <div class="tab-pane fade" id="navPhotography" role="tabpanel">
-          <div class="my-3 row row-cols-1 row-cols-md-3 g-4">
+          <div class="my-3 row row-cols-1 row-cols-md-3 g-4 ">
             <?php foreach($workPs as $p){ ?>
             <div class="col mt-4">
-              <div class="card bgShadow border-0" data-bs-toggle="modal" data-bs-target="#workP<?=$p['id'];?>">
-                <img src="./image/<?=$p['img'];?>" class="card-img-top">
+              <div class="card bgShadow border-0 h-100" data-bs-toggle="modal" data-bs-target="#workP<?=$p['id'];?>">
+                <img src="./image/<?=$p['img'];?>" class="card-img-top rounded">
                 <div class="d-flex align-items-center justify-content-center hoverContent">
                   <h5 class="subtitle text-center">
                     <?php $ptext=explode(",",$p['text']);
