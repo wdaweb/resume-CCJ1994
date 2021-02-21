@@ -719,10 +719,13 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
     <!-- Modal -->
     <?php foreach($workGs as $g){ ?>
     <div class="modal fade" id="workG<?=$g['id']?>" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content overflow-auto">
           <div class="modal-header">
-            <h5 class="modal-title"><?php echo $gtext[0].$gtext[1];?></h5>
+            <h5 class="modal-title">
+              <?php 
+              $gtext=explode(",",$g['text']);
+              echo $gtext[0].$gtext[1];?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="m-auto">
@@ -733,11 +736,15 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
     </div>
     <?php } ?>
     <?php foreach($workPs as $p){ ?>
-    <div class="modal fade" id="workP<?=$p['id']?>" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade " id="workP<?=$p['id']?>" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content overflow-auto">
           <div class="modal-header">
-            <h5 class="modal-title"><?php echo $ptext[0].$ptext[1];?></h5>
+            <h5 class="modal-title">
+              <?php 
+              $ptext=explode(",",$p['text']);
+              echo $ptext[0].$ptext[1];?>
+            </h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="m-auto">
