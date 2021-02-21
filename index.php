@@ -452,7 +452,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
                   <img src="./image/<?=$w['img']?>" class="card-img-top">
                   <div class="card-body text-muted">
                     <h5 class="card-title">應用技術</h5>
-                    <p class="card-text"><?php echo $wnote[1];?></p>
+                    <p class="card-text small"><?php echo $wnote[1];?></p>
                   </div>
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
@@ -589,7 +589,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
                   <img src="./image/<?=$w['img']?>" class="card-img-top">
                   <div class="card-body text-muted">
                     <h5 class="card-title">應用技術</h5>
-                    <p class="card-text"><?php echo $wnote[1];?></p>
+                    <p class="card-text small"><?php echo $wnote[1];?></p>
                   </div>
                   <div class="d-flex align-items-center justify-content-center hoverContent">
                     <h5 class="subtitle text-center">
