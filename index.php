@@ -206,11 +206,8 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
               </div>
             </div>
             <div id="exp<?=$exp['id'];?>" class="collapse" data-parent="#accordionExp">
-              <div class="card-body mb-4 expblock text-end">
-                <?php $j=explode("，",$exp['job']); 
-                    for($i=0;$i<count($j);$i++) { ?>
-                <div><?=$j[$i];?></div>
-                <?php }; ?>
+              <div class="card-body mb-4 expblock">
+              <p><?=$exp['job'];?></p>
               </div>
             </div>
           </div>
