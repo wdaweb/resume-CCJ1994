@@ -421,22 +421,22 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
             </div>
           </div> -->
           <div class="col-8 my-3 d-flex flex-wrap justify-content-around text-center">
-            <div class="col-4 m-2 tool2">
+            <div class="col-5 m-2 tool2">
               <i class="fab fa-html5 fa-3x"></i><br><span>HTML</span>
             </div>
-            <div class="col-4 m-2 tool2">
+            <div class="col-5 m-2 tool2">
               <i class="fab fa-css3-alt fa-3x"></i><br><span>CSS</span>
             </div>
-            <div class="col-4 m-2 tool2">
+            <div class="col-5 m-2 tool2">
               <i class="fab fa-php fa-3x"></i><br><span>PHP</span>
             </div>
-            <div class="col-4 m-2 tool2">
+            <div class="col-5 m-2 tool2">
               <i class="fab fa-js-square fa-3x"></i><br><span>JavaScript</span>
             </div>
-            <div class="col-4 m-2 tool2">
+            <div class="col-5 m-2 tool2">
               <i class="fab fa-bootstrap fa-3x"></i><br><span>Bootstrap</span>
             </div>
-            <div class="col-4 m-2 tool2">
+            <div class="col-5 m-2 tool2">
               <svg x="0px" y="0px" viewBox="0 0 52 52" width="85">
                 <path d="M1.7,51.4c-0.1-0.1-0.1-0.1-0.1-0.2c0.1-0.5,0.2-1,0.4-1.6c0.1-0.4,0.4-0.3,0.7-0.3c0.4,0,0.7-0.1,0.9-0.5
 		                    c0.4-0.8,0.6-1.6,0.8-2.5C4.5,45.2,4.6,44.1,5,43c0.2-0.5,0.2-0.5,0.7-0.5c0.5,0,1,0,1.4,0c0.3,0,0.3,0.1,0.3,0.3
@@ -493,7 +493,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
 		                    c-0.3,0-0.3-0.1-0.2-0.4c0.4-0.7,0.9-1,1.8-0.9c0.5,0.1,0.9,0.2,1,0.8c0,0,0,0,0,0c0,0,0,0,0,0C32.9,42.6,32.9,42.7,32.9,42.8z" />
               </svg>
             </div>
-            <div class="col-4 m-2 tool2">
+            <div class="col-5 m-2 tool2">
               <svg x="0px" y="0px" viewBox="0 0 52 52" width="55">
                 <polygon points="16.2,42.3 13.1,50.7 33.4,50.7 30.3,42.3 	" />
                 <path d="M26.5,17l12.9,33.7h3.7V26.3h5.4v24.4H49c0.9,0,1.7-0.8,1.7-1.7V3c0-0.9-0.8-1.7-1.7-1.7H3
@@ -503,7 +503,7 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
                 <polygon points="23.4,22.9 23.2,22.9 17.9,37.6 28.8,37.6" />
               </svg><br><span>Illustrator</span>
             </div>
-            <div class="col-4 m-2 tool2">
+            <div class="col-5 m-2 tool2">
               <svg x="0px" y="0px" viewBox="0 0 52 52" width="55">
                 <path d="M22.3,34.4c0.9-0.8,1.4-2,1.4-3.7c0-1.7-0.5-3-1.6-3.7c-0.9-0.8-2.5-1.1-4.5-1.1h-6.9v9.8h6.9
 		                    C19.8,35.5,21.3,35.2,22.3,34.4z" />
@@ -515,6 +515,12 @@ $pic=$pdo->query("select * from resume_pic where `sh`='1'")->fetchAll();
 		                    c-1.2,0-2.2,0.2-2.8,0.5c-0.8,0.3-1.1,0.9-1.1,1.7c0,0.6,0.5,1.2,1.7,1.7c0.6,0.3,2,0.6,4.2,1.2c2.3,0.6,4.2,1.2,5.3,2
 		                    c1.7,1.1,2.5,2.5,2.5,4.4c0,4.5-3.1,6.7-9.5,6.7h8.7c0.9,0,1.7-0.8,1.7-1.7V2.9C51,1.9,50.2,1.2,49.3,1.2z" />
               </svg><br><span>Photoshop</span>
+            </div>
+            <div class="col-5 m-2 tool2">
+            <i class="fas fa-address-card fa-3x"></i><br><span>網頁設計乙級</span>
+            </div>
+            <div class="col-5 m-2 tool2">
+              <i class="far fa-address-card fa-3x"></i><br><span>印前製程乙級</span>
             </div>
           </div>
         </div>
